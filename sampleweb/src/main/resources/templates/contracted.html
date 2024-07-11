@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>契約完了</title>
+</head>
+<body>	
+	<div th:insert="~{common/sourceList :: sourceList}"></div>
+	<div th:replace="~{common/header :: header}"></div>
+
+	ご契約ありがとうございます<br/>
+
+	<a th:href="@{/menu}">トップメニューへ</a>	<br/>
+</body>
+</html>

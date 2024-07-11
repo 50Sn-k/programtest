@@ -45,6 +45,10 @@ public class UserInfo {
 	@Column(name ="one_time_code_send_time")
 	private LocalDateTime oneTimeCodeSendTime;
 	
+	/** 契約日時 */
+	@Column(name="contract_time")
+	private LocalDateTime contract_time;
+	
 	/*ログイン失敗回数*/
 	@Column(name ="login_failure_count")
 	private int loginFailureCount = 0;
@@ -79,6 +83,18 @@ public class UserInfo {
 	@Column(name ="update_user")
 	private String updateUser;
 	
+	/** 会社名 */
+	@Column(name="company_name")
+	private String companyName;
+	
+	/** 会社住所 */
+	@Column(name="company_address")
+	private String companyAddress;
+	
+	/** 電話番号 */
+	@Column(name="telephone_number")
+	private String telephoneNumber;
+	
 	public UserInfo(){
 	}
 	
@@ -88,7 +104,9 @@ public class UserInfo {
 	 *@return ログイン失敗回数がインクリメントされたUserInfo
 	 */
 	public UserInfo incrementLoginFailureCount() {
-		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime, ++loginFailureCount,accountLockedTime,userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser);
+		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
+				contract_time, ++loginFailureCount,accountLockedTime,
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
 		
 	}
 	
@@ -99,7 +117,9 @@ public class UserInfo {
 	 *@return ログイン失敗情報がリセットされたUserInfo
 	 */
 	public UserInfo resetLoginFailureInfo() {
-		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime, 0,null,userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser);
+		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
+				contract_time, 0,null,
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
 		
 	}
 	
@@ -109,6 +129,21 @@ public class UserInfo {
 	 *@return ログイン失敗情報がリセットされたUserInfo
 	 */
 	public UserInfo updateAccountLocked() {
-		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime, 0,LocalDateTime.now(),userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser);
+		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
+				contract_time, 0,LocalDateTime.now(),
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
+	}
+	
+	/**
+	 * 契約日時を更新する
+	 * 
+	 * @return 契約日時が更新されたUserInfo
+	 */
+	public UserInfo completeContract() {
+		return new UserInfo(loginId,password,mailAddress,oneTimeCode,oneTimeCodeSendTime,
+				LocalDateTime.now(),loginFailureCount,
+				accountLockedTime,userStatusKind,
+				authorityKind,signupCompleted,createTime,updateTime,updateUser
+				,companyName,companyAddress,telephoneNumber);
 	}
 }

@@ -33,4 +33,6 @@ public class ViewNameConst {
 	/** ユーザー編集画面 エラー時 */
 	public static final String USER_EDIT_ERROR = "userEditError";
 
+	public static final String CONTRACT = "contract";
+
 }

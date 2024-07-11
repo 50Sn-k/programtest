@@ -19,6 +19,12 @@
 		</div>
 		<a th:href="@{/userList}" class="btn btn-danger">ユーザー管理画面へ</a>
 	</th:block>
+	<div class="mt-3">
+			契約はこちら
+		</div>
+		<th:block th:if="${unSigned}">
+			<a th:href="@{/contract}"class="btn btn-primary">ご契約</a>
+		</th:block>
 </div>
 </body>
 </html>
