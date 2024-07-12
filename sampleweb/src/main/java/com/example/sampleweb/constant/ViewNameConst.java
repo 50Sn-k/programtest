@@ -27,12 +27,16 @@ public class ViewNameConst {
 	/*ユーザー一覧画面*/
 	public static final String USER_LIST ="userList";
 	
-	/** ユーザー編集画面 */
+	/* ユーザー編集画面 */
 	public static final String USER_EDIT = "userEdit";
 	
-	/** ユーザー編集画面 エラー時 */
+	/* ユーザー編集画面 エラー時 */
 	public static final String USER_EDIT_ERROR = "userEditError";
 
+	/* 契約画面 */
 	public static final String CONTRACT = "contract";
+	
+	/* 契約画面 */
+	public static final String COM_READING = "comReading";
 
 }

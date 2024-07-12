@@ -31,6 +31,9 @@ public class UrlConst {
 	/*ユーザーコントラクト*/
 	public static final String CONTRACT = "/contract";
 	
+	/*コミュニケーション*/
+	public static final String COM_READING = "/comReading";
+	
 	/*認証不要画面*/
 	public static final String[] NO_AUTHENTICATION = {LOGIN,SIGNUP,SIGNUP_CONFIRM, SIGNUP_COMPLETION, "/webjars/**","/css/**"};
 
