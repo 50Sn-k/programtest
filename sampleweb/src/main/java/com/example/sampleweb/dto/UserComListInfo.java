@@ -33,7 +33,7 @@ public class UserComListInfo {
 	private boolean isNoticeWatched;
 	
 	/*日報*/
-	private String dailyReport;//後にText型に変更することを前提に一旦String型とする
+	private String dailyReport;
 	
 	/*週報*/
 	private String weeklyReport;

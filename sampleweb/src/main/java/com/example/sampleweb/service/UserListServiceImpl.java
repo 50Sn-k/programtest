@@ -88,7 +88,7 @@ public class UserListServiceImpl implements UserListService{
 	 * ユーザー情報EntityのListをユーザー一覧情報DTOのListに変換します
 	 * 
 	 * @param userInfos ユーザー情報EntityのList
-	 * @return ユーザー一覧上等DTOのList
+	 * @return ユーザー一覧情報DTOのList
 	 */
 	private List<UserListInfo> toUserListInfos(List<UserInfo> userInfos){
 		var userListInfos = new ArrayList<UserListInfo>();

@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CommunicationReadingServiceImpl implements CommunicationReadingService{
 	
-	/*ユーザー情報テーブルDAO*/
+	/*ユーザー情報テーブルDTO*/
 	private final CommunicationRepository repository;
 	
 	/*Dozer Mapper*/
@@ -30,6 +30,14 @@ public class CommunicationReadingServiceImpl implements CommunicationReadingServ
 		return toComReadListInfos(repository.findAll());
 	}
 	
+	/**
+	 * 社内連絡情報取得
+	 * 
+	 * 社内連絡情報を取得する
+	 * 
+	 * @param Communications 社内連絡情報EntityのList
+	 * @return 社内連絡情報のList
+	 */
 	public List<UserComListInfo> toComReadListInfos(List<Communication> Communications){
 		var userComListInfos = new ArrayList<UserComListInfo>();
 		for(Communication communication : Communications) {

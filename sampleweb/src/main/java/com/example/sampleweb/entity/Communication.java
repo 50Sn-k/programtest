@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * ユーザー情報テーブル Entity
+ * 社内連絡情報テーブル Entity
  */
 
 @Entity
@@ -46,7 +46,7 @@ public class Communication {
 	
 	/*日報*/
 	@Column(name ="daily_report")
-	private String dailyReport;//後にText型に変更することを前提に一旦String型とする
+	private String dailyReport;
 	
 	/*週報*/
 	@Column(name ="weekly_report")

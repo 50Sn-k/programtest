@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 /**
- * 社内連絡コントローラー
+ * 社内連絡情報コントローラー
  * 
  * @author k-suzuki
  * 
@@ -68,7 +68,7 @@ public class CommunicationReadingController {
 	 * a
 	 * 
 	 * @param model モデル
-	 * @return ユーザー一覧情報
+	 * @return 社内連絡一覧情報
 	 */
 	private List<UserComListInfo> editUserListInfo() {
 
