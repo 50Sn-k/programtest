@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.sampleweb.constant.SessionKeyConst;
 import com.example.sampleweb.constant.UrlConst;
@@ -52,7 +52,7 @@ public class CommunicationReadingController {
 	 * @return 
 	 */
 	
-	@GetMapping(UrlConst.COM_READING)
+	@PostMapping(UrlConst.COM_READING)
 	public String view(Model model,ComReadingForm form) {
 		session.removeAttribute(SessionKeyConst.SELECETED_LOGIN_ID);
 		
