@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.sampleweb.dto.UserComListInfo;
-import com.example.sampleweb.entity.UserInfo;
-import com.example.sampleweb.repository.UserInfoRepository;
+import com.example.sampleweb.entity.Communication;
+import com.example.sampleweb.repository.CommunicationRepository;
 import com.github.dozermapper.core.Mapper;
 
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class CommunicationReadingServiceImpl implements CommunicationReadingService{
 	
 	/*ユーザー情報テーブルDAO*/
-	private final UserInfoRepository repository;
+	private final CommunicationRepository repository;
 	
 	/*Dozer Mapper*/
 	private final Mapper mapper;
@@ -30,10 +30,10 @@ public class CommunicationReadingServiceImpl implements CommunicationReadingServ
 		return toComReadListInfos(repository.findAll());
 	}
 	
-	public List<UserComListInfo> toComReadListInfos(List<UserInfo> userInfos){
+	public List<UserComListInfo> toComReadListInfos(List<Communication> Communications){
 		var userComListInfos = new ArrayList<UserComListInfo>();
-		for(UserInfo userInfo : userInfos) {
-			var userComListInfo = mapper.map(userInfo, UserComListInfo.class);
+		for(Communication communication : Communications) {
+			var userComListInfo = mapper.map(communication, UserComListInfo.class);
 			userComListInfos.add(userComListInfo);
 		}
 		
