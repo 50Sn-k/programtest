@@ -26,7 +26,7 @@ public class UserListForm {
 	/*アカウント状態種別*/
 	private AuthorityKind authorityKind;
 	
-	/*ユーザー一覧情報亜kら選択されたログインID*/
+	/*ユーザー一覧情報から選択されたログインID*/
 	private String selectedLoginId;
 	
 	/**

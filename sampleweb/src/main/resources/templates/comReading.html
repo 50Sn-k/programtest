@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー一覧</title>
+</head>
+
+<div th:insert="~{common/sourceList :: sourceList}"></div>
+<div th:replace="~{common/header :: header}"></div>
+<div th:replace="~{common/messageIcon :: messageIcon}"></div>
+<script type="text/javascript" th:src="@{/js/userList.js}"></script>
+<div class="container-fluid">
+	<div th:insert="~{common/guideMessage :: guideMessage}"></div>
+	 <h2 class="mt-3">ユーザー一覧かもしれない</h2>
+		<form th:action="@{/comReading}" method="post" th:object="${comReadingForm}">
+			<div class="mt-3">
+				<th:block th:unless="${#lists.isEmpty(comReading)}">
+					<table class="table table-striped" id="comReading">
+						<thead>
+							<tr>
+								<th scope="col"></th>
+								<th scope="col">ログインID</th>
+								<th scope="col">連絡事項</th>
+								<th scope="col">備考</th>
+								<th scope="col">連絡先</th>
+								<th scope="col">作業内容</th>
+								<th scope="col">作業状況</th>
+								<th scope="col">連絡確認状況</th>
+								<th scope="col">日報</th>
+								<th scope="col">週報</th>
+								<th scope="col">月報</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="comRead,stat : ${comReading}">
+								<th scope="row" th:text="${stat.count}"></th>
+								<td th:id="|loginId_${stat.count}|"><span th:text="${comRead.loginId}"></span></td>
+								<td th:id="|notice_${stat.count}|"><span th:text="${comRead.notice}"></span></td>
+								<td th:id="|note_${stat.count}|"><span th:text="${comRead.note}"></span></td>
+								<td th:id="|contactAddress_${stat.count}|"><span th:text="${comRead.contactAddress}"></span></td>
+								<td th:id="|workDetails_${stat.count}|"><span th:text="${comRead.workDetails}"></span></td>
+								<td th:id="|workStatus_${stat.count}|"><span th:text="${comRead.workStatus}"></span></td>
+								<td th:id="|isNoticeWatched_${stat.count}|"><span th:text="${comRead.isNoticeWatched}"></span></td>
+								<td th:id="|dailyReport_${stat.count}|"><span th:text="${comRead.dailyReport}"></span></td>
+								<td th:id="|weeklyReport_${stat.count}|"><span th:text="${comRead.weeklyReport}"></span></td>
+								<td th:id="|monthlyReport_${stat.count}|"><span th:text="${comRead.monthlyReport}"></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</th:block>
+				<div class="mt-3">
+					<a th:href="@{/menu}">▶トップメニューみたいな場所に戻る</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</html>
