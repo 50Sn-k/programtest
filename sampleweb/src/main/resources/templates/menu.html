@@ -10,17 +10,16 @@
 <div class="container-fluid">
  <h2>トップメニュー！！だったやつ</h2>
  <h3 class="ribbon1">こんにちは! <span sec:authentication="name"></span> さん</h3>
- <h4 class="midasinormal">社員用ページ</h4><br>
+ <h4 class="midasinormal">社員用ページ</h4>
 	 <div class="archive">
 		<div class="mt-3">
 			商品一覧の確認、管理はこちら<br>
-			<a href="" class="btn btn-primary">商品一覧画面へ</a>
+			<a href="" class="btn btn-warning">商品一覧画面へ</a>
 		</div>
-	 </div>
-	 
-		<th:block th:if="${hasUserManageAuth}">
-			<h4 class="midasiauthority">管理者用確認ページ</h4>
-			<div class="archive">
+	 </div> 
+	<th:block th:if="${hasUserManageAuth}">
+		<h4 class="midasiauthority">管理者用確認ページ</h4>
+		<div class="archive">
 			<div class="mt-3">
 				ユーザー情報の管理はこちら<br>
 				<a th:href="@{/userList}" class="btn btn-danger">ユーザー管理画面へ</a>
@@ -29,18 +28,17 @@
 				社内連絡の一覧はこちら<br>
 				<a th:href="@{/comReading}" class="btn btn-danger">社内連絡確認画面へ</a>
 			</div>
-			</div>
-		</th:block>
-		<h4 class="midasisonota">その他</h4>
-		<div class="archive">
+		</div>
+	</th:block>
+	<h4 class="midasisonota">その他</h4>
+	<div class="archive">
 		<th:block th:if="${unSigned}">
 			<div class="mt-3">
 				契約はこちら<br>
 				<a th:href="@{/contract}"class="btn btn-primary">ご契約</a>
 			</div>
 		</th:block>
-		
- 		</div>
+ 	</div>
 </div>
 </body>
 </html>

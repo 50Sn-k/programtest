@@ -59,7 +59,7 @@ h2 {
   padding: 0.3em 0.5em;
   background: -webkit-linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
   background: linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
-  color: rgb(255, 255, 128);
+  color: rgb(255, 255, 0);
   
 }
 
@@ -81,9 +81,16 @@ h2 {
   
 }
 
+.formlogin{
+    width: fit-content;
+    margin: auto;
+    border: 1px solid #333;
+    background: rgb(255, 181, 225);
+}
 
-
-
+.label{
+    display: flex;
+}
 
 
 

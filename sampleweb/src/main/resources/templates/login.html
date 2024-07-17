@@ -10,18 +10,24 @@
  <h2>ログインしろ的な画面</h2>
  <div th:insert="~{common/guideMessage :: guideMessage}"></div>
 <form th:action="@{/login}" method="post" th:object="${loginForm}">
-	<div class="form-group">
-		<div class="col-3 col-md-2 col-xxl-1">
-			<p><label for="loginId">ログインID:</label>
-			<input type="text" class="form-control" th:field="*{loginId}">
+	<div class="form-group" style="border:none; background: rgb(255, 181, 225); border-radius: 15px;  padding: 10px 15px;">
+		<div class="row row-cols-auto justify-content-center">
+			<div class="col-3 col-md-2 col-xxl-1">
+				<p><label for="loginId">ログインID:</label>
+				<input type="text" class="form-control" th:field="*{loginId}">
+			</div>
 		</div>
-		<div class="col-3 col-md-2 col-xxl-1">
-			<p><label for="password">パスワード:</label>
-			<input type="password" class="form-control" th:field="*{password}">
+		<div class="row row-cols-auto justify-content-center">
+			<div class="col-3 col-md-2 col-xxl-1">
+				<p><label for="password">パスワード:</label>
+				<input type="password" class="form-control" th:field="*{password}">
+			</div>
+		 </div>
+		 <div class="row row-cols-auto justify-content-center">
+			<p><input type="submit" class="btn btn-primary" value="ログイン">
 		</div>
-		<p><input type="submit" class="btn btn-primary" value="ログイン">
 	</div>
-</form>
+</form><br>
 <a th:href="@{/signup}">▶ユーザー登録はココ</a>
 </div>
 </body>
