@@ -46,11 +46,12 @@ public class MenuController {
 						.equals(AuthorityKind.ITEM_MANAGER.getCode()));
 		var userInfo = service.serchUserById(user.getUsername());
 		var unSigned = userInfo.get().getContract_time()==null;
+		var usernames = userInfo.get().getLoginId();
 		model.addAttribute("hasUserManageAuth",hasUserManageAuth);
 		model.addAttribute("hasUserEditAuth",hasUserEditAuth);
 		model.addAttribute("unSigned",unSigned);
+		model.addAttribute("usernames",usernames);
 		
 		return ViewNameConst.MENU;
 	}
-	
 }

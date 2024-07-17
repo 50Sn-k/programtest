@@ -4,6 +4,8 @@ package com.example.sampleweb.controller;
 import java.util.List;
 
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,14 +76,17 @@ public class UserListController {
 	 * @return ユーザー一覧画面テンプレート名
 	 */
 	@GetMapping(UrlConst.USER_LIST)
-	public String view(Model model,UserListForm form) {
+	public String view(Model model,UserListForm form,@AuthenticationPrincipal UserDetails user) {
 		session.removeAttribute(SessionKeyConst.SELECETED_LOGIN_ID);
 		
-
+		var userAuthority = user.getAuthorities().stream()
+				.allMatch(authority -> authority.getAuthority()
+						.equals(AuthorityKind.ITEM_AND_USER_MANAGER.getCode()));
 		model.addAttribute(KEY_USERLIST,editUserListInfo(model));
 		
 		model.addAttribute(KEY_USER_STATUS_KIND_OPTIONS,UserStatusKind.values());
 		model.addAttribute(KEY_AUTHORITY_KIND_OPTIONS,AuthorityKind.values());
+		model.addAttribute("userAuthority",userAuthority);
 		
 		return ViewNameConst.USER_LIST;
 	}

@@ -55,7 +55,7 @@ public class WebSecurityConfig {
 					login -> login.loginPage(UrlConst.LOGIN)//自作ログイン画面(Controller)を使うための設定
 					.usernameParameter(USERNAME_PARAMETER)//ユーザー名パラメータのname属性
 					.defaultSuccessUrl(UrlConst.MENU))//ログイン画成功後のリダイレクトURL
-		.logout(logout -> logout.logoutSuccessUrl(UrlConst.SIGNUP));
+		.logout(logout -> logout.logoutSuccessUrl(UrlConst.LOGIN));
 		return http.build();
 	}
 	

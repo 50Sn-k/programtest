@@ -3,13 +3,16 @@ package com.example.sampleweb.controller;
 import java.util.List;
 
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.sampleweb.constant.SessionKeyConst;
 import com.example.sampleweb.constant.UrlConst;
 import com.example.sampleweb.constant.ViewNameConst;
+import com.example.sampleweb.constant.db.AuthorityKind;
 import com.example.sampleweb.dto.UserComListInfo;
 import com.example.sampleweb.form.ComReadingForm;
 import com.example.sampleweb.service.CommunicationReadingService;
@@ -52,11 +55,15 @@ public class CommunicationReadingController {
 	 * @return 
 	 */
 	
-	@PostMapping(UrlConst.COM_READING)
-	public String view(Model model,ComReadingForm form) {
+	@GetMapping(UrlConst.COM_READING)
+	public String view(Model model,ComReadingForm form,@AuthenticationPrincipal UserDetails user) {
 		session.removeAttribute(SessionKeyConst.SELECETED_LOGIN_ID);
+		var userAuthority = user.getAuthorities().stream()
+				.allMatch(authority -> authority.getAuthority()
+						.equals(AuthorityKind.ITEM_AND_USER_MANAGER.getCode()));
 		
 		model.addAttribute(KEY_COM_READING,editUserListInfo());
+		model.addAttribute("userAuthority",userAuthority);
 		
 		return ViewNameConst.COM_READING;
 	}
