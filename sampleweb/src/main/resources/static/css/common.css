@@ -2,3 +2,94 @@
 .table-row-active {
 	background-color: #ff00ff !important; /* 選択行の背景色を設定 */
 }
+
+.ribbon1 {
+  display: inline-block;
+  position: relative;
+  height: 50px;/*リボンの高さ*/
+  line-height: 50px;/*リボンの高さ*/
+  text-align: center;
+  padding: 0 30px;/*横の大きさ*/
+  font-size: 18px;/*文字の大きさ*/
+  background: #f57a78;/*塗りつぶし色*/
+  color: #FFF;/*文字色*/
+  box-sizing: border-box;
+}
+
+.ribbon1:before, .ribbon1:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.ribbon1:before {
+  top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.ribbon1:after {
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+h2 {
+  padding: 1rem 2rem;
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#fa709a), to(#fee140));
+  background-image: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+  background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+
+.archive {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.midasinormal {
+  position: relative;
+  padding: 0.3em 0.5em;
+  background: -webkit-linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
+  background: linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
+  color: rgb(255, 255, 128);
+  
+}
+
+.midasiauthority {
+  position: relative;
+  padding: 0.3em 0.5em;
+  background: -webkit-linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
+  background: linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
+  color: rgb(255, 0, 128);
+  
+}
+
+.midasisonota {
+  position: relative;
+  padding: 0.3em 0.5em;
+  background: -webkit-linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
+  background: linear-gradient(to top, rgb(137, 184, 255), #c5ceff);
+  color: rgb(0, 0, 255);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
