@@ -33,11 +33,14 @@ public class ViewNameConst {
 	/* ユーザー編集画面 エラー時 */
 	public static final String USER_EDIT_ERROR = "userEditError";
 
-	/* 契約画面 */
+	/** 契約画面 */
 	public static final String CONTRACT = "contract";
 	
 	/* 社内連絡一覧画面 */
 	public static final String COM_READING = "comReading";
+	
+	/** 社内連絡事項入力画面 */
+	public static final String COM_INPUT = "/communicationInput";
 	
 	/* スキルシート一覧画面 */
 	public static final String SKILL_SHEET_LOOK = "skillSheetLook";

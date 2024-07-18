@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>連絡事項入力画面</title>
+</head>
+<body>
+	<div th:insert="~{common/sourceList :: sourceList}"></div>
+	<div th:replace="~{common/header :: header}"></div>
+	<div th:replace="~{common/messageIcon :: messageIcon}"></div>
+	<div class="container-fluid">
+		<h2>連絡事項入力画面</h2>
+		<div class="alert d-flex align-items-center" th:classappend="|${isError ? 'alert-danger':'alert-primary'}|" role="alert" th:if="${message}!=null">
+			<svg class="bi flex-shrink-0 me-2" width="24" height="24">
+				<use xlink:href="#exclamation-triangle-fill" th:if="${isError}" />
+				<use xlink:href="#info-fill" th:unless="${isError}" />
+			</svg>
+			<span th:text="${message}"></span>
+		</div>
+		<form th:action="@{/communicationInput}" method="post" th:object="${UserComListForm}">
+			<div class="form-group">
+				<span th:if="${#fields.hasErrors('notice')}"th:errors="*{notice}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="notice">連絡事項:</label>
+					<input type="text" class="form-control" th:field="*{notice}"></p>
+				</div>
+				<span th:if="${#fields.hasErrors('note')}"th:errors="*{note}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="companyAddress">備考:</label>
+					<input type="text" class="form-control" th:field="*{note}"></p>
+				</div>
+				<span th:if="${#fields.hasErrors('contactAddress')}"th:errors="*{contactAddress}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="contactAddress">連絡先:</label>
+					<input type="text" class="form-control" th:field="*{contactAddress}"></p>
+				</div>
+				<span th:if="${#fields.hasErrors('workDetails')}"th:errors="*{workDetails}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="workDetails">作業内容:</label>
+					<input type="text" class="form-control" th:field="*{workDetails}"></p>
+				</div>
+				<span th:if="${#fields.hasErrors('workStatus')}"th:errors="*{workStatus}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="workStatus">作業状況:</label>
+					<input type="text" class="form-control" th:field="*{workStatus}"></p>
+				</div>
+				<span th:if="${#fields.hasErrors('dailyReport')}"th:errors="*{dailyReport}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="dailyReport">日報:</label>
+					<input type="text" class="form-control" th:field="*{dailyReport}"></p>
+				</div>
+				<span th:if="${#fields.hasErrors('weeklyReport')}"th:errors="*{weeklyReport}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="weeklyReport">週報:</label>
+					<input type="text" class="form-control" th:field="*{weeklyReport}"></p>
+				</div>
+				<span th:if="${#fields.hasErrors('monthlyReport')}"th:errors="*{monthlyReport}"></span>
+				<div class="col-9 col-md-6 col-xx-3">
+					<p><label for="monthlyReport">月報:</label>
+					<input type="text" class="form-control" th:field="*{monthlyReport}"></p>
+				</div>
+				<p><input type="submit" class="btn btn-primary" name="update" value="連絡事項送信"></p>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

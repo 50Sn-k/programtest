@@ -34,6 +34,9 @@ public class UrlConst {
 	/*コミュニケーション*/
 	public static final String COM_READING = "/comReading";
 	
+	/** 社内連絡事項入力画面 */
+	public static final String COM_INPUT = "/communicationInput";
+	
 	/*スキルシート一覧*/
 	public static final String SKILL_SHEET_LOOK = "/skillSheetLook";
 	
