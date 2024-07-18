@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * ユーザー登録情報確認画面Service実装クラス
  * 
- * @author ys-fj
+ * @author k-suzuki
  *
  */
 @Service

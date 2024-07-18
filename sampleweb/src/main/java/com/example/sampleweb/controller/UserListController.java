@@ -168,7 +168,7 @@ public class UserListController {
 	/**
 	 * 操作種別Enum
 	 * 
-	 * @author ys-fj
+	 * @author k-suzuki
 	 */
 	public enum OperationKind {
 		SEARCH, DELETE

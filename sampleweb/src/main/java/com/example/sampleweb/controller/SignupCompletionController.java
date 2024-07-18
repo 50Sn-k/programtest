@@ -10,7 +10,7 @@ import com.example.sampleweb.constant.ViewNameConst;
 /**
  * ユーザー登録情報確認結果画面Controllerクラス
  * 
- * @author ys-fj
+ * @author k-suzuki
  *
  */
 @Controller

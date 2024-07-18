@@ -3,7 +3,7 @@ package com.example.sampleweb.constant;
 /**
  * モデルキー定数クラス
  * 
- * @author ys-fj
+ * @author k-suzuki
  *
  */
 public class ModelKey {

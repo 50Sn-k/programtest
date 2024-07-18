@@ -5,7 +5,7 @@ import com.example.sampleweb.constant.SignupConfirmStatus;
 /**
  * ユーザー登録情報確認画面Serviceインターフェース
  * 
- * @author ys-fj
+ * @author k-suzuki
  *
  */
 public interface SignupConfirmService {

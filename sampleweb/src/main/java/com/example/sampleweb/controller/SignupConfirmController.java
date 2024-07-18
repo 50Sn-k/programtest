@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * ユーザー登録情報確認画面Controllerクラス
  * 
- * @author ys-fj
+ * @author k-suzuki
  *
  */
 @Controller

@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * ログイン画面Controllerクラス
  * 
- * @author ys-fj
+ * @author k-suzuki
  *
  */
 @Controller

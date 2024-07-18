@@ -3,7 +3,7 @@ package com.example.sampleweb.service.common;
 /**
  * メール送信Serviceクラス
  * 
- * @author ys-fj
+ * @author k-suzuki
  *
  */
 public interface MailSendService {
