@@ -36,7 +36,10 @@ public class ViewNameConst {
 	/* 契約画面 */
 	public static final String CONTRACT = "contract";
 	
-	/* 契約画面 */
+	/* 社内連絡一覧画面 */
 	public static final String COM_READING = "comReading";
+	
+	/* スキルシート一覧画面 */
+	public static final String SKILL_SHEET_LOOK = "skillSheetLook";
 
 }

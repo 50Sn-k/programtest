@@ -34,6 +34,9 @@ public class UrlConst {
 	/*コミュニケーション*/
 	public static final String COM_READING = "/comReading";
 	
+	/*スキルシート一覧*/
+	public static final String SKILL_SHEET_LOOK = "/skillSheetLook";
+	
 	/*認証不要画面*/
 	public static final String[] NO_AUTHENTICATION = {LOGIN,SIGNUP,SIGNUP_CONFIRM, SIGNUP_COMPLETION, "/webjars/**","/css/**"};
 
