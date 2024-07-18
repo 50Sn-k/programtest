@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CommunicationInputServiceImpl implements CommunicationInputService {
 
-	private final CommunicationInputServiceImpl service;
+	private final UserComListInfo comInfo;
 
 	/** ユーザ情報テーブルDAO */
 	private final UserInfoRepository repository;
@@ -33,7 +33,7 @@ public class CommunicationInputServiceImpl implements CommunicationInputService 
 	 */
 	@Override
 	public void setContactAddress(String address) {
-		service.setContactAddress(address);
+		comInfo.setContactAddress(address);
 	}
 
 	/**
