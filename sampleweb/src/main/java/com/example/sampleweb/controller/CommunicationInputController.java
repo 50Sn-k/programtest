@@ -1,6 +1,5 @@
 package com.example.sampleweb.controller;
 
-import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import com.example.sampleweb.service.CommunicationInputServiceImpl;
 import com.example.sampleweb.util.AppUtil;
 import com.github.dozermapper.core.Mapper;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -37,14 +35,14 @@ public class CommunicationInputController {
 	/** ユーザー編集画面Serviceクラス */
 	private final CommunicationInputServiceImpl service;
 
-	/** セッションオブジェクト */
-	private final HttpSession session;
+//	/** セッションオブジェクト */
+//	private final HttpSession session;
 
 	/** Dozer Mapper */
 	private final Mapper mapper;
 	
-	/** メッセージソース */
-	private final MessageSource messageSource;
+//	/** メッセージソース */
+//	private final MessageSource messageSource;
 	
 	/**
 	 * ログインIDに紐づくユーザー情報を画面に表示します。
