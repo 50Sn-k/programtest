@@ -21,7 +21,7 @@ public class MenuService {
 	 * @param loginId ログインID
 	 * @return 検索結果
 	 */
-	public Optional<UserInfo>serchUserById(String loginId){
+	public Optional<UserInfo>searchUserById(String loginId){
 		return repository.findById(loginId);
 	}
 

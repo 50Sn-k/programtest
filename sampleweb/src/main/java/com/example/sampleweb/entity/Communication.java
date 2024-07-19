@@ -1,5 +1,7 @@
 package com.example.sampleweb.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -42,7 +44,7 @@ public class Communication {
 	
 	/*連絡確認状況*/
 	@Column(name ="is_notice_watched")
-	private boolean isNoticeWatched = false;
+	private boolean isNoticeWatched;
 	
 	/*日報*/
 	@Column(name ="daily_report")
@@ -55,6 +57,10 @@ public class Communication {
 	/*月報*/
 	@Column(name ="monthly_report")
 	private String monthlyReport;
+	
+	/*最終更新日時 */
+	@Column(name ="update_time")
+	private LocalDateTime updateTime;
 	
 	public Communication(){
 	}

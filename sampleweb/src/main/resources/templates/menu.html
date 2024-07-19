@@ -10,6 +10,40 @@
 <div class="container-fluid">
  <h2>トップメニュー！！だったやつ</h2>
  <h3 class="ribbon1">こんにちは! <span sec:authentication="name"></span> さん</h3>
+ <div class="label">
+	  <div class="archive lefts">
+	 <h4 class="newmidoku">未読の社内連絡</h4><br>
+ <th:block th:if="${hasUserManageAuth}">
+	 <th:block th:unless="${#lists.isEmpty(comReading)}">
+		<table class="table table-striped" id="comReading" align="right">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">ログインID</th>
+					<th scope="col">連絡事項</th>
+					<th scope="col">連絡確認状況</th>
+					<th scope="col">受信時間</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="comRead,stat : ${comReading}">
+					<th scope="row" th:text="${stat.count}"></th>
+					<td th:id="|loginId_${stat.count}|"><span th:text="${comRead.loginId}"></span></td>
+					<td th:id="|notice_${stat.count}|"><span th:text="${comRead.notice}"></span></td>
+					<td th:id="|isNoticeWatched_${stat.count}|"><span th:text="${comRead.isNoticeWatched}"></span></td>
+					<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</th:block>
+ 	<th:block th:if="${#lists.isEmpty(comReading)}">
+					<div class="text-center">
+						<span>未読の社内連絡はありません</span>
+					</div>
+ </th:block>
+ </th:block>
+ </div>
+ </div>
  <h4 class="midasinormal">社員用ページ</h4>
 	 <div class="archive">
 		<div class="mt-3">
@@ -52,5 +86,6 @@
 		</th:block>
  	</div>
 </div>
+<br><br><br><br><br><br><br><br><br>
 </body>
 </html>

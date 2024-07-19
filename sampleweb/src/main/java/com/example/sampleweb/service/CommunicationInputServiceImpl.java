@@ -1,5 +1,6 @@
 package com.example.sampleweb.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -38,10 +39,11 @@ public class CommunicationInputServiceImpl implements CommunicationInputService 
 		updateInfo.setContactAddress(userComListInfos.getContactAddress());
 		updateInfo.setWorkDetails(userComListInfos.getWorkDetails());
 		updateInfo.setWorkStatus(userComListInfos.getWorkStatus());
-		updateInfo.setNoticeWatched(userComListInfos.isNoticeWatched());
+		updateInfo.setNoticeWatched(false);
 		updateInfo.setDailyReport(userComListInfos.getDailyReport());
 		updateInfo.setWeeklyReport(userComListInfos.getWeeklyReport());
 		updateInfo.setMonthlyReport(userComListInfos.getMonthlyReport());
+		updateInfo.setUpdateTime(LocalDateTime.now());
 
 		try {
 			repository.save(updateInfo);

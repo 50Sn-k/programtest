@@ -1,5 +1,7 @@
 package com.example.sampleweb.controller;
 
+import java.util.List;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.sampleweb.constant.UrlConst;
 import com.example.sampleweb.constant.ViewNameConst;
 import com.example.sampleweb.constant.db.AuthorityKind;
+import com.example.sampleweb.dto.UserComListInfo;
+import com.example.sampleweb.service.CommunicationReadingService;
 import com.example.sampleweb.service.MenuService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +27,13 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class MenuController {
+	
+	/*ユーザー登録画面Serviceクラス*/
+	private final CommunicationReadingService comservice;
+	
+	/*モデルキー:ユーザー情報リスト */
+	private static final String KEY_COM_READ_MENU = "comReading";
+	
 	/**
 	 * 画面の初期表示を行います。
 	 * 
@@ -44,14 +55,30 @@ public class MenuController {
 		var hasUserEditAuth = user.getAuthorities().stream()
 				.allMatch(authority -> authority.getAuthority()
 						.equals(AuthorityKind.ITEM_MANAGER.getCode()));
-		var userInfo = service.serchUserById(user.getUsername());
+		var userInfo = service.searchUserById(user.getUsername());
 		var unSigned = userInfo.get().getContract_time()==null;
 		var usernames = userInfo.get().getLoginId();
 		model.addAttribute("hasUserManageAuth",hasUserManageAuth);
 		model.addAttribute("hasUserEditAuth",hasUserEditAuth);
 		model.addAttribute("unSigned",unSigned);
 		model.addAttribute("usernames",usernames);
+		if(hasUserEditAuth==false) {
+			model.addAttribute(KEY_COM_READ_MENU,editUserListInfo());
+		}
 		
 		return ViewNameConst.MENU;
 	}
+	
+	
+	/**
+	 * a
+	 * 
+	 * @param model モデル
+	 * @return 社内連絡一覧情報
+	 */
+	private List<UserComListInfo> editUserListInfo() {
+
+		return comservice.editUserComMenuList();
+	}
+	
 }

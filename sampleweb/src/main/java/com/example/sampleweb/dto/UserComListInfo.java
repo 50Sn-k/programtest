@@ -1,5 +1,7 @@
 package com.example.sampleweb.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 /**
@@ -40,5 +42,8 @@ public class UserComListInfo {
 	
 	/*月報*/
 	private String monthlyReport;
+	
+	/*最終更新日時 */
+	private LocalDateTime updateTime;
 	
 }

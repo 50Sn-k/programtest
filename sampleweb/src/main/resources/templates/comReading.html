@@ -30,6 +30,7 @@
 								<th scope="col">日報</th>
 								<th scope="col">週報</th>
 								<th scope="col">月報</th>
+								<th scope="col">最終更新時間</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -45,6 +46,7 @@
 								<td th:id="|dailyReport_${stat.count}|"><span th:text="${comRead.dailyReport}"></span></td>
 								<td th:id="|weeklyReport_${stat.count}|"><span th:text="${comRead.weeklyReport}"></span></td>
 								<td th:id="|monthlyReport_${stat.count}|"><span th:text="${comRead.monthlyReport}"></span></td>
+								<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>	
 							</tr>
 						</tbody>
 					</table>

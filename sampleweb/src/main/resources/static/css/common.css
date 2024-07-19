@@ -92,10 +92,32 @@ h2 {
     display: flex;
 }
 
+.label2{
+    flex-direction: column;
+}
 
+.newmidoku {
+    position: relative;
+    padding: .5em .7em;
+    border-radius: 10px;
+    background-color: #2589d0;
+    color: #fff;
+}
 
+.newmidoku::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border: 11px solid transparent;
+    border-top: 11px solid #2589d0;
+}
 
-
+.lefts {
+	margin-left:auto
+}
 
 
 
