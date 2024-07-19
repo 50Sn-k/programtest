@@ -3,16 +3,14 @@ package com.example.sampleweb.service;
 import java.util.Optional;
 
 import com.example.sampleweb.dto.UserComListInfo;
-import com.example.sampleweb.entity.UserInfo;
+import com.example.sampleweb.entity.Communication;
 
 
 public interface CommunicationInputService {
 
 	/** ユーザデータ呼び出し */
-	public Optional<UserInfo> serchUserById(String userInfo);
-	
-	/** 連絡先入力 */
-	public void setContactAddress(String address);
+	public Optional<Communication> serchUserById(String userInfo);
+
 	
 	/** 連絡事項、備考、作業内容、作業状況入力 */
 	public void setCom(UserComListInfo userComListInfos);

@@ -3,7 +3,6 @@ package com.example.sampleweb.dto;
 import lombok.Data;
 
 /**
-<<<<<<< HEAD
  * 	ユーザー一覧画面DTOクラス
  * 
  * @author k-suzuki

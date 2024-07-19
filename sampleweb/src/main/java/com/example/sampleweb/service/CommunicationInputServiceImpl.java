@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.sampleweb.dto.UserComListInfo;
-import com.example.sampleweb.entity.UserInfo;
-import com.example.sampleweb.repository.UserInfoRepository;
+import com.example.sampleweb.entity.Communication;
+import com.example.sampleweb.repository.CommunicationRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,16 +14,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CommunicationInputServiceImpl implements CommunicationInputService {
 
-	private final CommunicationInputServiceImpl service;
-
 	/** ユーザ情報テーブルDAO */
-	private final UserInfoRepository repository;
+	private final CommunicationRepository repository;
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Optional<UserInfo> serchUserById(String userInfo) {
+	public Optional<Communication> serchUserById(String userInfo) {
 		var updateInfoOpt = repository.findById(userInfo);
 		return updateInfoOpt;
 	}
@@ -32,26 +30,18 @@ public class CommunicationInputServiceImpl implements CommunicationInputService 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setContactAddress(String address) {
-		service.setContactAddress(address);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public void setCom(UserComListInfo userComListInfos) {
-		var updateInfoOpt = repository.findById(userComListInfos.getLoginId());
-		var updateInfo = updateInfoOpt.get();
-//		updateInfo.setNotice(userComListInfos.getNotice());
-//		updateInfo.setCompanyAddress(userComListInfos.getNote());
-//		updateInfo.setTelephoneNumber(userComListInfos.getContactAddress());
-//		updateInfo.setTelephoneNumber(userComListInfos.getWorkDetails());
-//		updateInfo.setTelephoneNumber(userComListInfos.getWorkStatus());
-//		updateInfo.setTelephoneNumber(userComListInfos.isNoticeWatched());
-//		updateInfo.setTelephoneNumber(userComListInfos.getDailyReport());
-//		updateInfo.setTelephoneNumber(userComListInfos.getWeeklyReport());
-//		updateInfo.setTelephoneNumber(userComListInfos.getMonthlyReport());
+		Communication updateInfo = new Communication();
+		updateInfo.setLoginId(userComListInfos.getLoginId());
+		updateInfo.setNotice(userComListInfos.getNotice());
+		updateInfo.setNote(userComListInfos.getNote());
+		updateInfo.setContactAddress(userComListInfos.getContactAddress());
+		updateInfo.setWorkDetails(userComListInfos.getWorkDetails());
+		updateInfo.setWorkStatus(userComListInfos.getWorkStatus());
+		updateInfo.setNoticeWatched(userComListInfos.isNoticeWatched());
+		updateInfo.setDailyReport(userComListInfos.getDailyReport());
+		updateInfo.setWeeklyReport(userComListInfos.getWeeklyReport());
+		updateInfo.setMonthlyReport(userComListInfos.getMonthlyReport());
 
 		try {
 			repository.save(updateInfo);

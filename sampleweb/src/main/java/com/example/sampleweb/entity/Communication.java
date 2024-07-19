@@ -42,7 +42,7 @@ public class Communication {
 	
 	/*連絡確認状況*/
 	@Column(name ="is_notice_watched")
-	private boolean isNoticeWatched;
+	private boolean isNoticeWatched = false;
 	
 	/*日報*/
 	@Column(name ="daily_report")

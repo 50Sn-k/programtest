@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlins:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ご契約画面</title>
+<style>
+   .privacy-policy {
+	color: #555;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 700px;
+	height: 200px;
+	overflow-y: scroll;
+	padding: 6px 12px;
+	}
+	#check-disabled {
+	  color: #afafaf;
+	}
+ </style>
+
+</head>
+<body>
+	<div th:insert="~{common/sourceList :: sourceList}"></div>
+	<div th:replace="~{common/header :: header}"></div>
+<form th:action="@{/contract}" method="post" th:object="${contractForm}">
+<h2>利用規約を確認して登録ボタンを押してください</h2>
+	
+	<div id="privacyPolicy" class="privacy-policy">
+		利用規約-demo(ここでは憲法)<br/>
+		
+		第一章　天皇		<br/>
+		〔天皇の地位と主権在民〕		<br/>
+		
+		第一条　天皇は、日本国の象徴であり日本国民統合の象徴であつて、この地位は、主権の存する日本国民の総意に基く。		<br/>
+		
+		〔皇位の世襲〕		<br/>
+		
+		第二条　皇位は、世襲のものであつて、国会の議決した皇室典範の定めるところにより、これを継承する。		<br/>
+		
+		〔内閣の助言と承認及び責任〕		<br/>
+		
+		第三条　天皇の国事に関するすべての行為には、内閣の助言と承認を必要とし、内閣が、その責任を負ふ。		<br/>
+		
+		〔天皇の権能と権能行使の委任〕		<br/>
+		
+		第四条　天皇は、この憲法の定める国事に関する行為のみを行ひ、国政に関する権能を有しない。		<br/>
+		
+		２　天皇は、法律の定めるところにより、その国事に関する行為を委任することができる。		<br/>
+		
+		〔摂政〕		<br/>
+		
+		第五条　皇室典範の定めるところにより摂政を置くときは、摂政は、天皇の名でその国事に関する行為を行ふ。この場合には、前条第一項の規定を準用する。		<br/>
+		
+		〔天皇の任命行為〕		<br/>
+		...
+	</div>
+	<div id="privacyCheck" class="check-disabled">
+	<label>
+	    <input type="checkbox" name="privacy" value="agree"　disabled>
+	    利用規約に同意します
+	</label>
+	</div>
+<input type="submit" class="btn btn-primary" value="契約"/>
+<input type="button" class="btn btn-danger" onclick="history.back()" value="戻る">
+</form>
+<script>
+  const agree = document.getElementById('privacyPolicy');
+  const element = document.getElementById('privacyCheck');
+  const checkbox = document.querySelector("input[type='checkbox']");
+  checkbox.disabled = true;
+  agree.addEventListener('scroll', function(){
+    if(Math.abs(agree.scrollHeight - agree.clientHeight - agree.scrollTop) <= 1){
+      checkbox.disabled = false;
+      element.classList.remove('check-disabled');
+    } 
+  });
+</script>
+
+</body>
+</html>
