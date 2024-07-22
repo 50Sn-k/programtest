@@ -23,6 +23,7 @@
 					<th scope="col">連絡事項</th>
 					<th scope="col">連絡確認状況</th>
 					<th scope="col">受信時間</th>
+					<th scope="col">既読にする(仮)</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,6 +33,7 @@
 					<td th:id="|notice_${stat.count}|"><span th:text="${comRead.notice}"></span></td>
 					<td th:id="|isNoticeWatched_${stat.count}|"><span th:text="${comRead.isNoticeWatched}"></span></td>
 					<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+					<td><button class="btn btn-danger">既読</button></td>
 				</tr>
 			</tbody>
 		</table>

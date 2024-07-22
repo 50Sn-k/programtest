@@ -65,21 +65,20 @@ public class CommunicationReadingServiceImpl implements CommunicationReadingServ
 	 * メニュー画面に未読の社内連絡情報を5件まで取得する
 	 * 
 	 * @param Communications 社内連絡情報EntityのList
-	 * @return 社内連絡情報のList
+	 * @return 未読の社内連絡情報のList(最大5件まで)
 	 */
 	public List<UserComListInfo> toComMenuListInfos(List<Communication> Communications){
-		var userComListInfos = new ArrayList<UserComListInfo>();
-		for(Communication communication : Communications) {
-			var userComListInfo = mapper.map(communication, UserComListInfo.class);
-			if(userComListInfo.isNoticeWatched()==false){
-				userComListInfos.add(userComListInfo);
-				if(userComListInfos.size()>=5) {
-					break;
-				}
+		var allcomListInfo = toComReadListInfos(Communications);
+		List<UserComListInfo> newComList = new ArrayList<UserComListInfo>();
+		for(int i = 0;i < allcomListInfo.size();i++) {
+			if(allcomListInfo.get(i).isNoticeWatched()==false) {
+				newComList.add(allcomListInfo.get(i));
+			}
+			if(newComList.size()>=5){
+				break;
 			}
 		}
-		userComListInfos.sort(Comparator.comparing(UserComListInfo::getUpdateTime).reversed());
-		return userComListInfos;
+		return newComList;
 	}
 
 	@Override
