@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.sampleweb.constant.SessionKeyConst;
 import com.example.sampleweb.constant.UrlConst;
@@ -16,6 +18,7 @@ import com.example.sampleweb.constant.db.AuthorityKind;
 import com.example.sampleweb.dto.UserComListInfo;
 import com.example.sampleweb.form.ComReadingForm;
 import com.example.sampleweb.service.CommunicationReadingService;
+import com.example.sampleweb.util.AppUtil;
 import com.github.dozermapper.core.Mapper;
 
 import jakarta.servlet.http.HttpSession;
@@ -66,6 +69,24 @@ public class CommunicationReadingController {
 		model.addAttribute("userAuthority",userAuthority);
 		
 		return ViewNameConst.COM_READING;
+	}
+	
+	/**
+	 * 社内連絡を既読状態に更新します。
+	 * 
+	 * @param form 入力情報
+	 * @param user 認証済みユーザー情報
+	 * @param redirectAttributes リダイレクト用オブジェクト
+	 * @return リダイレクトURL
+	 */
+	@PostMapping(value = UrlConst.COM_READING, params = "nowatch")
+	public String noticeWatch(ComReadingForm form,@AuthenticationPrincipal UserDetails user,RedirectAttributes redirectAttributes){
+		var noWatchDto = mapper.map(form, UserComListInfo.class);
+		noWatchDto.setLoginId((String) session.getAttribute(SessionKeyConst.SELECETED_LOGIN_ID));
+
+		var updateResult = service.watchInfo(noWatchDto);
+
+		return AppUtil.doRedirect(UrlConst.USER_EDIT);
 	}
 	
 	

@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import lombok.Data;
 
 /**
- * ユーザー登録画面Formクラス
+ * 社内連絡登録画面Formクラス
  * 
  * @author k-suzuki
  * 
@@ -19,4 +19,6 @@ public class ComReadingForm {
 	@Length(min = 8,max = 20)
 	private String loginId;
 	
+	/*ユーザー一覧情報から選択されたログインID*/
+	private String selectedLoginId;
 }

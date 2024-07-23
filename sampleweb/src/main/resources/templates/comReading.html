@@ -8,7 +8,7 @@
 <div th:insert="~{common/sourceList :: sourceList}"></div>
 <div th:replace="~{common/header :: header}"></div>
 <div th:replace="~{common/messageIcon :: messageIcon}"></div>
-<script type="text/javascript" th:src="@{/js/userList.js}"></script>
+<script type="text/javascript" th:src="@{/js/comReading.js}"></script>
 <div class="container-fluid">
 	<div th:insert="~{common/guideMessage :: guideMessage}"></div>
 	 <h2 class="mt-3">社内連絡情報一覧とかだったり</h2>
@@ -46,7 +46,9 @@
 								<td th:id="|dailyReport_${stat.count}|"><span th:text="${comRead.dailyReport}"></span></td>
 								<td th:id="|weeklyReport_${stat.count}|"><span th:text="${comRead.weeklyReport}"></span></td>
 								<td th:id="|monthlyReport_${stat.count}|"><span th:text="${comRead.monthlyReport}"></span></td>
-								<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>	
+								<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+									<td><input type="text" th:field="*{selectedLoginId}" hidden>
+										<input type="submit" class="btn btn-danger" name="nowatch" value="既読にする"></td>	
 							</tr>
 						</tbody>
 					</table>

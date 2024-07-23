@@ -80,6 +80,30 @@ public class CommunicationReadingServiceImpl implements CommunicationReadingServ
 		}
 		return newComList;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean watchInfo(UserComListInfo userComListInfo) {
+
+		// 現在の登録情報を取得
+		var comReadingInfoOpt = repository.findById(userComListInfo.getLoginId());
+		if (comReadingInfoOpt.isEmpty()) {
+			return false;
+		}
+
+		// 画面の入力情報等をセット
+		var updateInfo = comReadingInfoOpt.get();
+		updateInfo.setNoticeWatched(true);
+
+		try {
+			repository.save(updateInfo);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 
 	@Override
 	public int compareTo(LocalDateTime s) {

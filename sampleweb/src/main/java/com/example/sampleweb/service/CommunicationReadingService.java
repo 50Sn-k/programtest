@@ -22,5 +22,10 @@ public interface CommunicationReadingService {
 	public List<UserComListInfo> editUserComMenuList();
 
 	public int compareTo(LocalDateTime s);
+
+	/**
+	 * {@inheritDoc}
+	 */
+	boolean watchInfo(UserComListInfo userComListInfo);
 	
 }
