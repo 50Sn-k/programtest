@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,14 @@ public class CommunicationReadingServiceImpl implements CommunicationReadingServ
 	@Override
 	public List<UserComListInfo> editUserComMenuList(){
 		return toComMenuListInfos(repository.findAll());
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Optional<Communication> comWatchInfo(String selectId) {
+		return repository.findById(selectId);
 	}
 	
 	/**
@@ -85,10 +94,10 @@ public class CommunicationReadingServiceImpl implements CommunicationReadingServ
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean watchInfo(UserComListInfo userComListInfo) {
+	public boolean watchInfo(String selectId) {
 
 		// 現在の登録情報を取得
-		var comReadingInfoOpt = repository.findById(userComListInfo.getLoginId());
+		var comReadingInfoOpt = repository.findById(selectId);
 		if (comReadingInfoOpt.isEmpty()) {
 			return false;
 		}

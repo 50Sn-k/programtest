@@ -2,8 +2,10 @@ package com.example.sampleweb.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.sampleweb.dto.UserComListInfo;
+import com.example.sampleweb.entity.Communication;
 
 public interface CommunicationReadingService {
 
@@ -26,6 +28,11 @@ public interface CommunicationReadingService {
 	/**
 	 * {@inheritDoc}
 	 */
-	boolean watchInfo(UserComListInfo userComListInfo);
+	Optional<Communication> comWatchInfo(String selectId);
+
+	/**
+	 * {@inheritDoc}
+	 */
+	boolean watchInfo(String selectId);
 	
 }

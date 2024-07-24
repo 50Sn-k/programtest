@@ -31,12 +31,13 @@
 								<th scope="col">週報</th>
 								<th scope="col">月報</th>
 								<th scope="col">最終更新時間</th>
+								<th scope="col">既読</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="comRead,stat : ${comReading}">
 								<th scope="row" th:text="${stat.count}"></th>
-								<td th:id="|loginId_${stat.count}|"><span th:text="${comRead.loginId}"></span></td>
+								<td th:id="|loginId_${stat.count}|"><span th:text="${comRead.loginId}" id="ssid"></span></td>
 								<td th:id="|notice_${stat.count}|"><span th:text="${comRead.notice}"></span></td>
 								<td th:id="|note_${stat.count}|"><span th:text="${comRead.note}"></span></td>
 								<td th:id="|contactAddress_${stat.count}|"><span th:text="${comRead.contactAddress}"></span></td>
@@ -47,11 +48,11 @@
 								<td th:id="|weeklyReport_${stat.count}|"><span th:text="${comRead.weeklyReport}"></span></td>
 								<td th:id="|monthlyReport_${stat.count}|"><span th:text="${comRead.monthlyReport}"></span></td>
 								<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
-									<td><input type="text" th:field="*{selectedLoginId}" hidden>
-										<input type="submit" class="btn btn-danger" name="nowatch" value="既読にする"></td>	
+								<td><button type="submit" class="btn btn-danger" id="selBtn" name="nowatch" value="既読にする"></td>	
 							</tr>
 						</tbody>
 					</table>
+					<input type="text" th:field="*{selectedLoginId}" hidden>
 				</th:block>
 				</th:block>
 					<th:block th:unless="${userAuthority}">

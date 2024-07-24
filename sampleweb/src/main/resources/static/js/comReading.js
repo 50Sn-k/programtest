@@ -3,10 +3,11 @@
  */
 $(function(){
 	//テーブルの行をクリックしたときの処理
-	$('button').on('click',function(){
-		var idx=$(this).closest('tr').children('th:if(0)');
+	
+	$('#comReading tbody tr button').on('click',function(){
+		
 		// ログインID一時保管
-		editSelectedLoginId(idx);
+		editSelectedLoginId($(this).closest('tr'));
 	});
  });
  
@@ -16,13 +17,13 @@ $(function(){
  * @param row 選択された行情報
  */
  function editSelectedLoginId(row){
-	/* row.find('td').each(function(){
-		 var columnId = $(this).attr('loginid');
-		 if(columnId.startsWith('loginId_')){*/
-			 $('#selectedLoginId').val($(row).text());
+	 row.find('td').each(function(){
+		 var columnId = $(this).attr('id');
+		 if(columnId.startsWith('loginId_')){
+			 $('#selectedLoginId').val($(this).text());
 			 return false;
-		// }
-	// });
+		 }
+	 });
  }
  
  

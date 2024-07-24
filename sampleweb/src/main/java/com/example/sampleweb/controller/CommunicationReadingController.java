@@ -81,12 +81,12 @@ public class CommunicationReadingController {
 	 */
 	@PostMapping(value = UrlConst.COM_READING, params = "nowatch")
 	public String noticeWatch(ComReadingForm form,@AuthenticationPrincipal UserDetails user,RedirectAttributes redirectAttributes){
-		var noWatchDto = mapper.map(form, UserComListInfo.class);
-		noWatchDto.setLoginId((String) session.getAttribute(SessionKeyConst.SELECETED_LOGIN_ID));
+		session.setAttribute(SessionKeyConst.SELECETED_LOGIN_ID,form.getSelectedLoginId());
+		form.setLoginId(form.getSelectedLoginId());
+		var selectId = (String) session.getAttribute(SessionKeyConst.SELECETED_LOGIN_ID);
+		service.watchInfo(selectId);
 
-		var updateResult = service.watchInfo(noWatchDto);
-
-		return AppUtil.doRedirect(UrlConst.USER_EDIT);
+		return AppUtil.doRedirect(UrlConst.COM_READING);
 	}
 	
 	

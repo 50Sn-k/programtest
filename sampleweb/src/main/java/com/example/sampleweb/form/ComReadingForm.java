@@ -1,7 +1,5 @@
 package com.example.sampleweb.form;
 
-
-
 import org.hibernate.validator.constraints.Length;
 
 import lombok.Data;

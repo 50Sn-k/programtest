@@ -134,7 +134,7 @@ public class UserListController {
 	}
 	
 	/**
-	 * 選択行のユーザー情報を削除して、最新情報で画面を再表示します
+	 * 選択行のユーザー情報を編集する画面に遷移します
 	 * 
 	 * @param form 入力情報
 	 * @return リダイレクトURL
