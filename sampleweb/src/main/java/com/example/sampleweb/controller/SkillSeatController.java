@@ -9,40 +9,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.sampleweb.constant.UrlConst;
 import com.example.sampleweb.constant.ViewNameConst;
-import com.example.sampleweb.dto.UserComListInfo;
+import com.example.sampleweb.dto.SkillSheetListInfo;
+import com.example.sampleweb.form.SkillSheetForm;
 import com.example.sampleweb.form.UserComListForm;
-import com.example.sampleweb.service.CommunicationInputServiceImpl;
+import com.example.sampleweb.service.SkillSheetServiceImpl;
 import com.example.sampleweb.util.AppUtil;
 import com.github.dozermapper.core.Mapper;
 
 import lombok.RequiredArgsConstructor;
 
 /**
- * 
- * 社内連絡入力画面
+ * スキルシート情報入力画面コントローラー
  * 
  * @author k-murata
- * 
  */
 
 @Controller
 @RequiredArgsConstructor
-public class CommunicationInputController {
+public class SkillSeatController {
+	
 	
 	/** 画面で使用するフォームクラス名 */
-	private static final String FORM_CLASS_NAME = "UserComListForm";
-
+	private static final String FORM_CLASS_NAME = "SkillSheetForm";
+	
 	/** ユーザー編集画面Serviceクラス */
-	private final CommunicationInputServiceImpl service;
-
-//	/** セッションオブジェクト */
-//	private final HttpSession session;
+	private final SkillSheetServiceImpl service;
 
 	/** Dozer Mapper */
 	private final Mapper mapper;
-	
-//	/** メッセージソース */
-//	private final MessageSource messageSource;
 	
 	/**
 	 * ログインIDに紐づくユーザー情報を画面に表示します。
@@ -52,13 +46,13 @@ public class CommunicationInputController {
 	 * @return ユーザー編集画面テンプレート名
 	 * @throws Exception 
 	 */
-	@GetMapping(UrlConst.COM_INPUT)
-	public String view(Model model,UserComListForm form) {
+	@GetMapping(UrlConst.SKILL_SHEET)
+	public String view(Model model,SkillSheetForm form) {
 		var isInitialDisp = !model.containsAttribute(FORM_CLASS_NAME);
 		if(isInitialDisp) {
 			model.addAttribute(FORM_CLASS_NAME,new UserComListForm());
 		}
-		return ViewNameConst.COM_INPUT;
+		return ViewNameConst.SKILL_SHEET_LOOK;
 	}
 	
 	/**
@@ -69,12 +63,13 @@ public class CommunicationInputController {
 	 * @param redirectAttributes リダイレクト用オブジェクト
 	 * @return リダイレクトURL
 	 */
-	@PostMapping(value = UrlConst.COM_INPUT, params = "update")
-	public String signup(Model model,UserComListForm form,@AuthenticationPrincipal User user) {
-		var updateDto = mapper.map(form, UserComListInfo.class);
+	@PostMapping(value = UrlConst.SKILL_SHEET, params = "update")
+	public String signup(Model model,SkillSheetForm form,@AuthenticationPrincipal User user) {
+		var updateDto = mapper.map(form, SkillSheetListInfo.class);
 		updateDto.setLoginId(user.getUsername());
-		service.setCom(updateDto);
+		service.inputSkill(updateDto);
 
-		return AppUtil.doRedirect(UrlConst.COM_INPUT);
+		return AppUtil.doRedirect(UrlConst.SKILL_SHEET);
 	}
+
 }
