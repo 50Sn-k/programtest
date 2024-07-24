@@ -11,7 +11,6 @@ import com.example.sampleweb.constant.UrlConst;
 import com.example.sampleweb.constant.ViewNameConst;
 import com.example.sampleweb.dto.SkillSheetListInfo;
 import com.example.sampleweb.form.SkillSheetForm;
-import com.example.sampleweb.form.UserComListForm;
 import com.example.sampleweb.service.SkillSheetServiceImpl;
 import com.example.sampleweb.util.AppUtil;
 import com.github.dozermapper.core.Mapper;
@@ -26,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class SkillSeatController {
+public class SkillSheetController {
 	
 	
 	/** 画面で使用するフォームクラス名 */
@@ -50,9 +49,9 @@ public class SkillSeatController {
 	public String view(Model model,SkillSheetForm form) {
 		var isInitialDisp = !model.containsAttribute(FORM_CLASS_NAME);
 		if(isInitialDisp) {
-			model.addAttribute(FORM_CLASS_NAME,new UserComListForm());
+			model.addAttribute(FORM_CLASS_NAME,new SkillSheetForm());
 		}
-		return ViewNameConst.SKILL_SHEET_LOOK;
+		return ViewNameConst.SKILL_SHEET;
 	}
 	
 	/**

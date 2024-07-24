@@ -45,4 +45,6 @@ public class ViewNameConst {
 	/* スキルシート一覧画面 */
 	public static final String SKILL_SHEET_LOOK = "skillSheetLook";
 
+	public static final String SKILL_SHEET = "skillSheet";
+
 }

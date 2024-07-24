@@ -17,14 +17,14 @@
 			</svg>
 			<span th:text="${message}"></span>
 		</div>
-		<form th:action="@{/skillSheet}" method="post" th:object="${SkillSheetListForm}">
+		<form th:action="@{/skillSheet}" method="post" th:object="${SkillSheetForm}">
 			<div class="form-group">
 				<span th:if="${#fields.hasErrors('qualification')}"th:errors="*{qualification}"></span>
 				<div class="col-9 col-md-6 col-xx-3">
 					<p><label for="qualification">取得資格:</label>
 					<input type="text" class="form-control" th:field="*{qualification}"></p>
 				</div>
-				<span th:if="${#fields.hasErrors('note')}"th:errors="*{achievements}"></span>
+				<span th:if="${#fields.hasErrors('achievements')}"th:errors="*{achievements}"></span>
 				<div class="col-9 col-md-6 col-xx-3">
 					<p><label for="achievements">実績</label>
 					<input type="text" class="form-control" th:field="*{achievements}"></p>
