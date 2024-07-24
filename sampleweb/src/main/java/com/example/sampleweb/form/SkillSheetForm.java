@@ -19,4 +19,9 @@ public class SkillSheetForm {
 	@Length(min = 8,max = 20)
 	private String loginId;
 	
+	/*資格*/
+	private String qualification;
+	
+	/*実績*/
+	private String achievements;
 }
