@@ -20,18 +20,24 @@ public interface CommunicationReadingService {
 	 * メニュー画面に表示する未読の社内連絡内容
 	 * 
 	 * 社内連絡一覧に表示する内容
+	 * 
+	 * @author k-suzuki
 	 */
 	public List<UserComListInfo> editUserComMenuList();
 
 	public int compareTo(LocalDateTime s);
 
 	/**
-	 * {@inheritDoc}
+	 * 未読の社内連絡を既読にする
+	 * 
+	 * @author k-suzuki
 	 */
 	Optional<Communication> comWatchInfo(String selectId);
 
 	/**
-	 * {@inheritDoc}
+	 * 未読の社内連絡を既読にする
+	 * 
+	 * @author k-suzuki
 	 */
 	boolean watchInfo(String selectId);
 	

@@ -3,8 +3,7 @@
  */
 $(function(){
 	//テーブルの行をクリックしたときの処理
-	
-	$('#comReading tbody tr button').on('click',function(){
+	$('#comReading tbody tr input').on('click',function(){
 		
 		// ログインID一時保管
 		editSelectedLoginId($(this).closest('tr'));

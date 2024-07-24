@@ -55,7 +55,8 @@ public class CommunicationReadingController {
 	 * 
 	 * @param model モデル
 	 * @param form 入力情報
-	 * @return 
+	 * @param user 認証済みユーザー情報
+	 * @return 社内連絡表示画面テンプレート名
 	 */
 	
 	@GetMapping(UrlConst.COM_READING)
@@ -88,9 +89,6 @@ public class CommunicationReadingController {
 
 		return AppUtil.doRedirect(UrlConst.COM_READING);
 	}
-	
-	
-	
 	
 	/**
 	 * a

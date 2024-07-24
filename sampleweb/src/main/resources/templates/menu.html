@@ -1,91 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>トップメニュー</title>
-</head>
-<body>
-<div th:insert="~{common/sourceList :: sourceList}"></div>
-<div th:replace="~{common/header :: header}"></div>
-<div class="container-fluid">
- <h2>トップメニュー！！だったやつ</h2>
- <h3 class="ribbon1">こんにちは! <span sec:authentication="name"></span> さん</h3>
- <div class="label">
-	  <div class="archive lefts">
-	 <h4 class="newmidoku">未読の社内連絡</h4><br>
- <th:block th:if="${hasUserManageAuth}">
-	 <th:block th:unless="${#lists.isEmpty(comReading)}">
-		<table class="table table-striped" id="comReading" align="right">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">ログインID</th>
-					<th scope="col">連絡事項</th>
-					<th scope="col">受信時間</th>
-					<th scope="col">既読にする(仮)</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="comRead,stat : ${comReading}">
-					<th scope="row" th:text="${stat.count}"></th>
-					<td th:id="|loginId_${stat.count}|"><span th:text="${comRead.loginId}"></span></td>
-					<td th:id="|notice_${stat.count}|"><span th:text="${comRead.notice}"></span></td>
-					<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
-					<td><button class="btn btn-danger">既読</button></td>
-				</tr>
-			</tbody>
-		</table>
-	</th:block>
- 	<th:block th:if="${#lists.isEmpty(comReading)}">
-					<div class="text-center">
-						<span>未読の社内連絡はありません</span>
-					</div>
- </th:block>
- </th:block>
- </div>
- </div>
- <h4 class="midasinormal">社員用ページ</h4>
-	 <div class="archive">
-		<div class="mt-3">
-			商品一覧の確認、管理はこちら<br>
-			<a href="" class="btn btn-warning">商品一覧画面へ</a>
-		</div>
-		<div class="mt-3">
-				スキル・資格情報の入力はこちら<br>
-				<a href="" class="btn btn-warning">スキル・資格情報入力画面へ</a>
-			</div>
-		<div class="mt-3">
-			社内連絡の入力はこちら<br>
-			<a th:href="@{/communicationInput}" class="btn btn-warning">社内連絡入力画面へ</a>
-		</div>
-	 </div> 
-	<th:block th:if="${hasUserManageAuth}">
-		<h4 class="midasiauthority">管理者用確認ページ</h4>
-		<div class="archive">
-			<div class="mt-3">
-				ユーザー情報の管理はこちら<br>
-				<a th:href="@{/userList}" class="btn btn-danger">ユーザー管理画面へ</a>
-			</div>
-			<div class="mt-3">
-				スキル・資格情報の一覧はこちら<br>
-				<a th:href="@{/skillSheetLook}" class="btn btn-danger">スキル・資格一覧へ</a>
-			</div>
-			<div class="mt-3">
-				社内連絡の一覧はこちら<br>
-				<a th:href="@{/comReading}" class="btn btn-danger">社内連絡確認画面へ</a>
-			</div>
-		</div>
-	</th:block>
-	<h4 class="midasisonota">その他</h4>
-	<div class="archive">
-		<th:block th:if="${unSigned}">
-			<div class="mt-3">
-				契約はこちら<br>
-				<a th:href="@{/contract}"class="btn btn-primary">ご契約</a>
-			</div>
-		</th:block>
- 	</div>
-</div>
-<br><br><br><br><br><br><br><br><br>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>トップメニュー</title>
+  </head>
+  <body>
+    <div th:insert="~{common/sourceList :: sourceList}"></div>
+    <div th:replace="~{common/header :: header}"></div>
+    <script type="text/javascript" th:src="@{/js/comReading.js}"></script>
+    <div class="container-fluid">
+      <h2>トップメニュー！！だったやつ</h2>
+      <h3 class="ribbon1">こんにちは! 
+        <span sec:authentication="name"></span>さん
+      </h3>
+      <div class="label">
+        <div class="archive lefts">
+          <h4 class="newmidoku">未読の社内連絡</h4>
+          <br>
+          <th:block th:if="${hasUserManageAuth}">
+            <th:block th:unless="${#lists.isEmpty(comReading)}">
+              <table class="table table-striped" id="comReading" align="right">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">ログインID</th>
+                    <th scope="col">連絡事項</th>
+                    <th scope="col">受信時間</th>
+                    <th scope="col">既読</th>
+                  </tr>
+                </thead>
+                <form th:action="@{/menu}" method="post" th:object="${comReadingForm}">
+                  <tbody>
+                    <tr th:each="comRead,stat : ${comReading}">
+                      <th scope="row" th:text="${stat.count}"></th>
+                      <td th:id="|loginId_${stat.count}|"><span th:text="${comRead.loginId}"></span></td>
+                      <td th:id="|notice_${stat.count}|"><span th:text="${comRead.notice}"></span></td>
+                      <td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(comRead.updateTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                      <td><input type="submit" class="btn btn-danger" id="selBtn" name="nowatch" value="既読にする"></td>
+                    </tr>
+                  </tbody>
+                  <input type="text" th:field="*{selectedLoginId}" hidden>
+                </form>
+              </table>
+            </th:block>
+            <th:block th:if="${#lists.isEmpty(comReading)}">
+              <div class="text-center">
+                <span>未読の社内連絡はありません</span>
+              </div>
+            </th:block>
+          </th:block>
+        </div>
+      </div>
+      <h4 class="midasinormal">社員用ページ</h4>
+      <div class="archive">
+        <div class="mt-3">商品一覧の確認、管理はこちら
+          <br>
+          <a href="" class="btn btn-warning">商品一覧画面へ</a>
+        </div>
+        <div class="mt-3">スキル・資格情報の入力はこちら
+          <br>
+          <a href="" class="btn btn-warning">スキル・資格情報入力画面へ</a>
+        </div>
+        <div class="mt-3">社内連絡の入力はこちら
+          <br>
+          <a th:href="@{/communicationInput}" class="btn btn-warning">社内連絡入力画面へ</a>
+        </div>
+      </div>
+      <th:block th:if="${hasUserManageAuth}">
+        <h4 class="midasiauthority">管理者用確認ページ</h4>
+        <div class="archive">
+          <div class="mt-3">ユーザー情報の管理はこちら
+            <br>
+            <a th:href="@{/userList}" class="btn btn-danger">ユーザー管理画面へ</a>
+          </div>
+          <div class="mt-3">スキル・資格情報の一覧はこちら
+            <br>
+            <a th:href="@{/skillSheetLook}" class="btn btn-danger">スキル・資格一覧へ</a>
+          </div>
+          <div class="mt-3">社内連絡の一覧はこちら
+            <br>
+            <a th:href="@{/comReading}" class="btn btn-danger">社内連絡確認画面へ</a>
+          </div>
+        </div>
+      </th:block>
+      <h4 class="midasisonota">その他</h4>
+      <div class="archive">
+        <th:block th:if="${unSigned}">
+          <div class="mt-3">契約はこちら
+            <br>
+            <a th:href="@{/contract}"class="btn btn-primary">ご契約</a>
+          </div>
+        </th:block>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
 </html>
