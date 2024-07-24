@@ -41,6 +41,7 @@ public class SkillSeatServiceImpl implements SkillSeatService {
 		
 		skillSheetInfo.setLoginId(skillSheetListInfos.getLoginId());
 		skillSheetInfo.setQualification(skillSheetListInfos.getQualification());
+		skillSheetInfo.setAchievements(skillSheetListInfos.getAchievements());
 		
 		try {
 			repository.save(skillSheetInfo);

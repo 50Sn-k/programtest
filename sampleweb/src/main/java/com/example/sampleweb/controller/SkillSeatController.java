@@ -46,13 +46,13 @@ public class SkillSeatController {
 	 * @return ユーザー編集画面テンプレート名
 	 * @throws Exception 
 	 */
-	@GetMapping(UrlConst.SKILL_SHEET_LOOK)
+	@GetMapping(UrlConst.SKILL_SHEET)
 	public String view(Model model,SkillSheetForm form) {
 		var isInitialDisp = !model.containsAttribute(FORM_CLASS_NAME);
 		if(isInitialDisp) {
 			model.addAttribute(FORM_CLASS_NAME,new UserComListForm());
 		}
-		return ViewNameConst.SKILL_SHEET_LOOK;
+		return ViewNameConst.SKILL_SHEET;
 	}
 	
 	/**
@@ -63,13 +63,13 @@ public class SkillSeatController {
 	 * @param redirectAttributes リダイレクト用オブジェクト
 	 * @return リダイレクトURL
 	 */
-	@PostMapping(value = UrlConst.SKILL_SHEET_LOOK, params = "update")
+	@PostMapping(value = UrlConst.SKILL_SHEET, params = "update")
 	public String signup(Model model,SkillSheetForm form,@AuthenticationPrincipal User user) {
 		var updateDto = mapper.map(form, SkillSheetListInfo.class);
 		updateDto.setLoginId(user.getUsername());
 		service.inputSkill(updateDto);
 
-		return AppUtil.doRedirect(UrlConst.SKILL_SHEET_LOOK);
+		return AppUtil.doRedirect(UrlConst.SKILL_SHEET);
 	}
 
 }
