@@ -95,6 +95,9 @@ public class UserInfo {
 	@Column(name="telephone_number")
 	private String telephoneNumber;
 	
+	@Column(name = "case_id")
+	private int assignedCaseID;
+	
 	public UserInfo(){
 	}
 	
@@ -106,7 +109,7 @@ public class UserInfo {
 	public UserInfo incrementLoginFailureCount() {
 		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
 				contract_time, ++loginFailureCount,accountLockedTime,
-				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress,assignedCaseID);
 		
 	}
 	
@@ -119,7 +122,7 @@ public class UserInfo {
 	public UserInfo resetLoginFailureInfo() {
 		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
 				contract_time, 0,null,
-				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress,assignedCaseID);
 		
 	}
 	
@@ -131,7 +134,7 @@ public class UserInfo {
 	public UserInfo updateAccountLocked() {
 		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
 				contract_time, 0,LocalDateTime.now(),
-				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress,assignedCaseID);
 	}
 	
 	/**
@@ -144,6 +147,6 @@ public class UserInfo {
 				LocalDateTime.now(),loginFailureCount,
 				accountLockedTime,userStatusKind,
 				authorityKind,signupCompleted,createTime,updateTime,updateUser
-				,companyName,companyAddress,telephoneNumber);
+				,companyName,companyAddress,telephoneNumber,assignedCaseID);
 	}
 }

@@ -38,6 +38,7 @@ public class UserAssignedCaseInfo {
 	/** 案件稼働状況 */
 	private String CaseDetailConfirmation;
 	
+	/** 案件稼働状況確認 */
 	public boolean casePeriodConf() {
 		boolean isOperating;
 		

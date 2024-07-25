@@ -3,17 +3,22 @@ package com.example.sampleweb.service;
 import java.util.Optional;
 
 import com.example.sampleweb.dto.UserAssignedCaseInfo;
-import com.example.sampleweb.entity.UserInfo;
+import com.example.sampleweb.entity.AssignedCaseStatus;
 
 public interface DisplayOfAssignedCaseStatusService {
 
-	public Optional<UserInfo> serchUserById(String loginId);
+	/** ユーザデータ呼び出し */
+	public Optional<AssignedCaseStatus> serchUserById(String loginId);
 	
+	/** 案件情報リストの取得 */
 	public UserAssignedCaseInfo getCase();
 	
+	/** 案件情報リスト登録 */
 	public void setUserAssignedCase(UserAssignedCaseInfo updateInfos);
 	
-	public void deleteUserAssignedCase();
+	/** 案件情報リスト削除 */
+	public void deleteUserAssignedCase(String assignedID);
 	
-	public void setAssinedCaseID(int caseId);
+	/** 案件情報の割り当て */
+	public void setAssignedCaseID(String loginId);
 }
