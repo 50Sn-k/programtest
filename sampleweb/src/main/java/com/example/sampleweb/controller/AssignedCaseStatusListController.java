@@ -116,7 +116,7 @@ public class AssignedCaseStatusListController {
 		var searchDto = mapper.map(form, CaseSearchInfo.class);
 		var userInfos = service.editCaseListByParam(searchDto);
 		redirectAttributes.addFlashAttribute(KEY_ASSIGNED_CASE_STATUS_LIST, userInfos);
-		redirectAttributes.addFlashAttribute(KEY_ASSIGNED_CASE_STATUS_LIST, form);
+		redirectAttributes.addFlashAttribute(KEY_ASSIGNED_CASE_STATUS_LIST_FORM, form);
 		redirectAttributes.addFlashAttribute(KEY_OPERATION_KIND, OperationKind.SEARCH);
 
 		return AppUtil.doRedirect(UrlConst.ASSIGNED_CASE_STATUS_LIST);
@@ -130,8 +130,8 @@ public class AssignedCaseStatusListController {
 	 */
 	@PostMapping(value = UrlConst.ASSIGNED_CASE_STATUS_LIST, params = "edit")
 	public String updateUser(AssignedCaseStatusListForm form) {
-		session.setAttribute(SessionKeyConst.SELECETED_LOGIN_ID,form.getSelectedcaseId());
-	return AppUtil.doRedirect(UrlConst.USER_EDIT);
+		session.setAttribute(SessionKeyConst.SELECETED_CASE_ID,form.getSelectedcaseId());
+	return AppUtil.doRedirect(UrlConst.ASSIGNED_CASE_STATUS_LIST);
 	}
 	/**
 	 * 選択行のユーザー情報を削除して、最新情報で画面を再表示します

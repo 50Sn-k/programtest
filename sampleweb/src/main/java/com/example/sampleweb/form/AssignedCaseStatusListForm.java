@@ -17,7 +17,7 @@ public class AssignedCaseStatusListForm {
 
 	/*ログインID*/
 	@Length(min = 8,max = 20)
-	private int caseId;
+	private String caseId;
 	
 	/*案件状況種別*/
 	private CaseStatusKind caseStatusKind;

@@ -87,9 +87,9 @@ public class AssignedCaseStatusListServiceImpl implements AssignedCaseStatusList
 	 */
 	private List<AssignedCaseStatusListInfo> toCaseListInfos(List<AssignedCaseStatus> list){
 		var assignedCaseStatusInfos = new ArrayList<AssignedCaseStatusListInfo>();
-		for(AssignedCaseStatus assignedCaseStatuss : list) {
-			var assignedCaseStatusInfo = mapper.map(assignedCaseStatuss, AssignedCaseStatusListInfo.class);
-			assignedCaseStatusInfo.setCaseStatus(assignedCaseStatuss.getCaseStatus().getDisplayValue());
+		for(AssignedCaseStatus assignedCaseStatus : list) {
+			var assignedCaseStatusInfo = mapper.map(assignedCaseStatus, AssignedCaseStatusListInfo.class);
+			assignedCaseStatusInfo.setCaseStatus(assignedCaseStatus.getCaseStatus().getDisplayValue());
 			assignedCaseStatusInfos.add(assignedCaseStatusInfo);
 		}
 		
