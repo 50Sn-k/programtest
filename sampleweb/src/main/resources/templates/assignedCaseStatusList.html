@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー一覧</title>
+</head>
+
+<div th:insert="~{common/sourceList :: sourceList}"></div>
+<div th:replace="~{common/header :: header}"></div>
+<div th:replace="~{common/messageIcon :: messageIcon}"></div>
+<script type="text/javascript" th:src="@{/js/userList.js}"></script>
+<div class="container-fluid">
+	<div th:insert="~{common/guideMessage :: guideMessage}"></div>
+	 <h2 class="mt-3">ユーザー一覧かもしれない</h2>
+	 <th:block th:if="${userAuthority}">
+	<div class="mt-3">
+		<span>＜絞り込み検索条件＞</span>
+	</div>
+		<form th:action="@{/assignedCaseStatusList}" method="post" th:object="${AssignedCaseStatusListForm}">
+			<div class="mt-1">
+				<table>
+					<tr>
+						<td><span>案件ID:</span></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<input type="text" class="form-control"th:field="*{caseId}">
+								</div>
+								<div class="col-auto">
+									<span class="form-text">※部分一致</span>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><span>案件稼働状況:</span></td>
+						<td>
+							<select class="form-select" th:field="*{caseStatusKind}">
+								<option value="">指定なし</option>
+								<option th:each="caseStatusKindOption:${caseStatusKindOptions}"
+								th:value="${caseStatusKindOption}" th:text="${caseStatusKindOption.displayValue}"></option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<input type="submit" class="btn btn-primary mt-3" name="search" value="検索">
+			</div>
+			<div class="mt-3">
+				<th:block th:unless="${#lists.isEmpty(assignedCaseStatusList)}">
+					<table class="table table-striped" id="assignedCaseStatusList">
+						<thead>
+							<tr>
+								<th scope="col"></th>
+								<th scope="col">案件ID</th>
+								<th scope="col">企業名</th>
+								<th scope="col">企業住所</th>
+								<th scope="col">案件詳細</th>
+								<th scope="col">案件開始日</th>
+								<th scope="col">案件終了日</th>
+								<th scope="col">案件状況</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="case,stat : ${assignedCaseStatusList}">
+								<th scope="row" th:text="${stat.count}"></th>
+								<td th:id="|caseId_${stat.count}|"><span th:text="${case.caseId}"></span></td>
+								<td th:id="|campanyName_${stat.count}|"><span th:text="${case.campanyName}"></span></td>
+								<td th:id="|campanyAddress_${stat.count}|"><span th:text="${case.campanyAddress}"></span></td>
+								<td th:id="|caseDetail_${stat.count}|"><span th:text="${case.caseDetail}"></span></td>
+								<td th:id="|caseStartDate_${stat.count}|"><span th:text="${#temporals.format(case.caseStartDate,'yyyy-MM-dd')}"></span></td>
+								<td th:id="|caseFinishDate_${stat.count}|"><span th:text="${#temporals.format(case.caseFinishDate,'yyyy-MM-dd')}"></span></td>
+								<td th:id="|caseStatus_${stat.count}|"><span th:text="${case.caseStatus}"></span></td>
+							</tr>
+						</tbody>
+					</table>
+					<input type="text" th:field="*{selectedCaseId}" hidden>
+					<input type="submit" class="btn btn-secondary" id="editBtn" name="edit" value="編集" disabled>
+					<input type="button" class="btn btn-danger" id="deleteDummyBtn" data-bs-toggle="modal" data-bs-target="#deleteConfirm" value="削除" disabled>
+					<input type="submit" id="deleteBtn" name="delete" hidden>
+				</th:block>
+				<th:block th:if="${#lists.isEmpty(assignedCaseStatusList)}">
+					<div class="text-center">
+						<span>※この案件は存在しません。</span>
+					</div>
+				</th:block>
+				</th:block>
+				<th:block th:unless="${userAuthority}">
+					アカウントの権限がないためこの画面は見えません
+					</th:block>
+				<div class="mt-3">
+					<a th:href="@{/menu}">▶トップメニューみたいな場所に戻る</a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- 削除確認モーダルの設定 -->
+	<div class="modal fade" id="deleteConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">削除前確認</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					本当に削除してもよろしいですか？
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+					<button type="button" class="btn btn-primary" id="deleteOkBtn">削除する</button>
+				</div>
+			</div>
+		</div>
+	</div>		
+</html>
