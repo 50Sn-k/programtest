@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.sampleweb.constant.db.CaseStatusKind;
-import com.example.sampleweb.entity.AssignedCaseStatus;
+import com.example.sampleweb.entity.Case;
 
-public interface CaseRepository extends JpaRepository<AssignedCaseStatus,String>{
+public interface CaseRepository extends JpaRepository<Case,String>{
 
 	/**
 	 * ログインIDの部分一致検索を行います。
@@ -15,7 +15,7 @@ public interface CaseRepository extends JpaRepository<AssignedCaseStatus,String>
 	 * @param loginId ログインID
 	 * @return 検索でヒットしたユーザー情報のリスト
 	 */
-	List<AssignedCaseStatus> findByCaseIdLike(String caseId);
+	List<Case> findByCaseIdLike(String caseId);
 
 	/**
 	 * ログインID、アカウント状態の項目を使って検索を行います。
@@ -31,6 +31,6 @@ public interface CaseRepository extends JpaRepository<AssignedCaseStatus,String>
 	 * @param userStatusKind アカウント状態
 	 * @return 検索でヒットしたユーザー情報のリスト
 	 */
-	List<AssignedCaseStatus> findByCaseIdLikeAndCaseStatusKind(String caseId, CaseStatusKind caseStatusKind);
+	List<Case> findByCaseIdLikeAndCaseStatusKind(String caseId, CaseStatusKind caseStatusKind);
 
 }

@@ -21,7 +21,7 @@ import lombok.Data;
 @Table(name = "case")
 @Data
 @AllArgsConstructor
-public class AssignedCaseStatus {
+public class Case {
 
 	/*案件ID*/
 	@Id
@@ -54,6 +54,6 @@ public class AssignedCaseStatus {
 	private CaseStatusKind caseStatus;
 	
 	
-	public AssignedCaseStatus(){
+	public Case(){
 	}
 }

@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.sampleweb.constant.UserDeleteResult;
-import com.example.sampleweb.dto.AssignedCaseStatusListInfo;
+import com.example.sampleweb.dto.CaseStatusListInfo;
 import com.example.sampleweb.dto.CaseSearchInfo;
-import com.example.sampleweb.entity.AssignedCaseStatus;
+import com.example.sampleweb.entity.Case;
 import com.example.sampleweb.repository.CaseRepository;
 import com.example.sampleweb.util.AppUtil;
 import com.github.dozermapper.core.Mapper;
@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Service
 @RequiredArgsConstructor
-public class AssignedCaseStatusListServiceImpl implements AssignedCaseStatusListService{
+public class CaseStatusListServiceImpl implements CaseStatusListService{
 	
 	/*ユーザー情報テーブルDAO*/
 	private final CaseRepository repository;
@@ -35,7 +35,7 @@ public class AssignedCaseStatusListServiceImpl implements AssignedCaseStatusList
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<AssignedCaseStatusListInfo> editCaseList(){
+	public List<CaseStatusListInfo> editCaseList(){
 		return toCaseListInfos(repository.findAll());
 	}
 	
@@ -43,7 +43,7 @@ public class AssignedCaseStatusListServiceImpl implements AssignedCaseStatusList
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<AssignedCaseStatusListInfo> editCaseListByParam(CaseSearchInfo dto){
+	public List<CaseStatusListInfo> editCaseListByParam(CaseSearchInfo dto){
 		return toCaseListInfos(findUserInfoByParam(dto));
 	}
 	
@@ -69,7 +69,7 @@ public class AssignedCaseStatusListServiceImpl implements AssignedCaseStatusList
 	 * @param form 入力情報
 	 * @return 検索結果
 	 */
-	private List<AssignedCaseStatus> findUserInfoByParam(CaseSearchInfo dto){
+	private List<Case> findUserInfoByParam(CaseSearchInfo dto){
 		var caseIdParam = AppUtil.addWildcard(dto.getCaseId());
 
 		if (dto.getCaseStatusKind() != null) {
@@ -85,15 +85,15 @@ public class AssignedCaseStatusListServiceImpl implements AssignedCaseStatusList
 	 * @param list ユーザー情報EntityのList
 	 * @return ユーザー一覧情報DTOのList
 	 */
-	private List<AssignedCaseStatusListInfo> toCaseListInfos(List<AssignedCaseStatus> list){
-		var assignedCaseStatusInfos = new ArrayList<AssignedCaseStatusListInfo>();
-		for(AssignedCaseStatus assignedCaseStatus : list) {
-			var assignedCaseStatusInfo = mapper.map(assignedCaseStatus, AssignedCaseStatusListInfo.class);
-			assignedCaseStatusInfo.setCaseStatus(assignedCaseStatus.getCaseStatus().getDisplayValue());
-			assignedCaseStatusInfos.add(assignedCaseStatusInfo);
+	private List<CaseStatusListInfo> toCaseListInfos(List<Case> list){
+		var caseStatusInfos = new ArrayList<CaseStatusListInfo>();
+		for(Case caseStatus : list) {
+			var caseStatusInfo = mapper.map(caseStatus, CaseStatusListInfo.class);
+			caseStatusInfo.setCaseStatus(caseStatus.getCaseStatus().getDisplayValue());
+			caseStatusInfos.add(caseStatusInfo);
 		}
 		
-		return assignedCaseStatusInfos;
+		return caseStatusInfos;
 	}
 	
 	

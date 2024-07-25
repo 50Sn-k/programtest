@@ -42,7 +42,7 @@ public enum CaseStatusKind {
 	 */
 	public static CaseStatusKind from(String code){
 		return Arrays.stream(CaseStatusKind.values())
-				.filter(CaseStatusKind -> CaseStatusKind.getCode().equals(code))
+				.filter(caseStatusKind -> caseStatusKind.getCode().equals(code))
 				.findFirst()
 				.orElse(UNKNOWN);
 	}

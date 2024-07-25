@@ -18,10 +18,10 @@ import com.example.sampleweb.constant.UserDeleteResult;
 import com.example.sampleweb.constant.ViewNameConst;
 import com.example.sampleweb.constant.db.AuthorityKind;
 import com.example.sampleweb.constant.db.CaseStatusKind;
-import com.example.sampleweb.dto.AssignedCaseStatusListInfo;
 import com.example.sampleweb.dto.CaseSearchInfo;
-import com.example.sampleweb.form.AssignedCaseStatusListForm;
-import com.example.sampleweb.service.AssignedCaseStatusListService;
+import com.example.sampleweb.dto.CaseStatusListInfo;
+import com.example.sampleweb.form.CaseStatusListForm;
+import com.example.sampleweb.service.CaseStatusListService;
 import com.example.sampleweb.util.AppUtil;
 import com.github.dozermapper.core.Mapper;
 
@@ -30,10 +30,10 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class AssignedCaseStatusListController {
+public class CaseStatusListController {
 
 	/*案件一覧画面Serviceクラス*/
-	private final AssignedCaseStatusListService service;
+	private final CaseStatusListService service;
 	
 	/*Dozer Mapper*/
 	private final Mapper mapper;
@@ -45,10 +45,10 @@ public class AssignedCaseStatusListController {
 	private final HttpSession session;
 
 	/*モデルキー：ユーザー情報リストフォーム */
-	private static final String KEY_ASSIGNED_CASE_STATUS_LIST_FORM = "assignedCaseStatusListForm";
+	private static final String KEY_CASE_STATUS_LIST_FORM = "caseStatusListForm";
 	
 	/*モデルキー:ユーザー情報リスト */
-	private static final String KEY_ASSIGNED_CASE_STATUS_LIST = "assignedCaseStatusList";
+	private static final String KEY_CASE_STATUS_LIST = "caseStatusList";
 	
 	/*モデルキー:ユーザー情報リスト*/
 	private static final String KEY_CASE_STATUS_KIND_OPTIONS ="caseStatusKindOptions";
@@ -65,19 +65,19 @@ public class AssignedCaseStatusListController {
 	 * @param form 入力情報
 	 * @return ユーザー一覧画面テンプレート名
 	 */
-	@GetMapping(UrlConst.ASSIGNED_CASE_STATUS_LIST)
-	public String view(Model model,AssignedCaseStatusListForm form,@AuthenticationPrincipal UserDetails user) {
+	@GetMapping(UrlConst.CASE_STATUS_LIST)
+	public String view(Model model,CaseStatusListForm form,@AuthenticationPrincipal UserDetails user) {
 		session.removeAttribute(SessionKeyConst.SELECETED_CASE_ID);
 		
 		var userAuthority = user.getAuthorities().stream()
 				.allMatch(authority -> authority.getAuthority()
 						.equals(AuthorityKind.ITEM_AND_USER_MANAGER.getCode()));
-		model.addAttribute(KEY_ASSIGNED_CASE_STATUS_LIST,editCaseListInfo(model));
+		model.addAttribute(KEY_CASE_STATUS_LIST,editCaseListInfo(model));
 		
 		model.addAttribute(KEY_CASE_STATUS_KIND_OPTIONS,CaseStatusKind.values());
 		model.addAttribute("userAuthority",userAuthority);
 		
-		return ViewNameConst.ASSIGNED_CASE_STATUS_LIST;
+		return ViewNameConst.CASE_STATUS_LIST;
 	}
 	
 	/**
@@ -87,15 +87,15 @@ public class AssignedCaseStatusListController {
 	 * @return ユーザー一覧情報
 	 */
 	@SuppressWarnings("unchecked")
-	private List<AssignedCaseStatusListInfo> editCaseListInfo(Model model) {
+	private List<CaseStatusListInfo> editCaseListInfo(Model model) {
 		var doneSearchOrDelete = model.containsAttribute(KEY_OPERATION_KIND);
 		if (doneSearchOrDelete) {
 			var operationKind = (OperationKind) model.getAttribute(KEY_OPERATION_KIND);
 			if (operationKind == OperationKind.SEARCH) {
-				return (List<AssignedCaseStatusListInfo>) model.getAttribute(KEY_ASSIGNED_CASE_STATUS_LIST);
+				return (List<CaseStatusListInfo>) model.getAttribute(KEY_CASE_STATUS_LIST);
 			}
 			if (operationKind == OperationKind.DELETE) {
-				var searchDto = mapper.map((AssignedCaseStatusListForm) model.getAttribute(KEY_ASSIGNED_CASE_STATUS_LIST_FORM), CaseSearchInfo.class);
+				var searchDto = mapper.map((CaseStatusListForm) model.getAttribute(KEY_CASE_STATUS_LIST_FORM), CaseSearchInfo.class);
 				return service.editCaseListByParam(searchDto);
 			}
 		}
@@ -111,15 +111,15 @@ public class AssignedCaseStatusListController {
 	 * @param redirectAttributes リダイレクト用オブジェクト
 	 * @return リダイレクトURL
 	 */
-	@PostMapping(value = UrlConst.ASSIGNED_CASE_STATUS_LIST, params = "search")
-	public String searchUser(AssignedCaseStatusListForm form, RedirectAttributes redirectAttributes) {
+	@PostMapping(value = UrlConst.CASE_STATUS_LIST, params = "search")
+	public String searchUser(CaseStatusListForm form, RedirectAttributes redirectAttributes) {
 		var searchDto = mapper.map(form, CaseSearchInfo.class);
 		var userInfos = service.editCaseListByParam(searchDto);
-		redirectAttributes.addFlashAttribute(KEY_ASSIGNED_CASE_STATUS_LIST, userInfos);
-		redirectAttributes.addFlashAttribute(KEY_ASSIGNED_CASE_STATUS_LIST_FORM, form);
+		redirectAttributes.addFlashAttribute(KEY_CASE_STATUS_LIST, userInfos);
+		redirectAttributes.addFlashAttribute(KEY_CASE_STATUS_LIST_FORM, form);
 		redirectAttributes.addFlashAttribute(KEY_OPERATION_KIND, OperationKind.SEARCH);
 
-		return AppUtil.doRedirect(UrlConst.ASSIGNED_CASE_STATUS_LIST);
+		return AppUtil.doRedirect(UrlConst.CASE_STATUS_LIST);
 	}
 	
 	/**
@@ -128,10 +128,10 @@ public class AssignedCaseStatusListController {
 	 * @param form 入力情報
 	 * @return リダイレクトURL
 	 */
-	@PostMapping(value = UrlConst.ASSIGNED_CASE_STATUS_LIST, params = "edit")
-	public String updateUser(AssignedCaseStatusListForm form) {
+	@PostMapping(value = UrlConst.CASE_STATUS_LIST, params = "edit")
+	public String updateUser(CaseStatusListForm form) {
 		session.setAttribute(SessionKeyConst.SELECETED_CASE_ID,form.getSelectedcaseId());
-	return AppUtil.doRedirect(UrlConst.ASSIGNED_CASE_STATUS_LIST);
+	return AppUtil.doRedirect(UrlConst.CASE_STATUS_LIST);
 	}
 	/**
 	 * 選択行のユーザー情報を削除して、最新情報で画面を再表示します
@@ -141,17 +141,17 @@ public class AssignedCaseStatusListController {
 	 * @return リダイレクトURL
 	 */
 	
-	@PostMapping(value = UrlConst.ASSIGNED_CASE_STATUS_LIST, params = "delete")
-	public String deleteUser(AssignedCaseStatusListForm form, RedirectAttributes redirectAttributes) {
+	@PostMapping(value = UrlConst.CASE_STATUS_LIST, params = "delete")
+	public String deleteUser(CaseStatusListForm form, RedirectAttributes redirectAttributes) {
 		var executeResult = service.deleteCaseInfoById(form.getSelectedcaseId());
 		redirectAttributes.addFlashAttribute(ModelKey.IS_ERROR,executeResult == UserDeleteResult.ERROR);
 		redirectAttributes.addFlashAttribute(ModelKey.MESSAGE,AppUtil.getMessage(messageSource, executeResult.getMessageId()));
 		
 		//削除後、フォーム情報の「選択されたログインID」は不要になるため、クリアします
-		redirectAttributes.addFlashAttribute(KEY_ASSIGNED_CASE_STATUS_LIST_FORM, form.clearSelectedCaseId());
+		redirectAttributes.addFlashAttribute(KEY_CASE_STATUS_LIST_FORM, form.clearSelectedCaseId());
 		redirectAttributes.addFlashAttribute(KEY_OPERATION_KIND, OperationKind.DELETE);
 
-		return AppUtil.doRedirect(UrlConst.ASSIGNED_CASE_STATUS_LIST);
+		return AppUtil.doRedirect(UrlConst.CASE_STATUS_LIST);
 	}
 
 	/**

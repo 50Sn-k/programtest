@@ -16,7 +16,7 @@
 	<div class="mt-3">
 		<span>＜絞り込み検索条件＞</span>
 	</div>
-		<form th:action="@{/assignedCaseStatusList}" method="post" th:object="${AssignedCaseStatusListForm}">
+		<form th:action="@{/caseStatusList}" method="post" th:object="${CaseStatusListForm}">
 			<div class="mt-1">
 				<table>
 					<tr>
@@ -46,8 +46,8 @@
 				<input type="submit" class="btn btn-primary mt-3" name="search" value="検索">
 			</div>
 			<div class="mt-3">
-				<th:block th:unless="${#lists.isEmpty(assignedCaseStatusList)}">
-					<table class="table table-striped" id="assignedCaseStatusList">
+				<th:block th:unless="${#lists.isEmpty(caseStatusList)}">
+					<table class="table table-striped" id="caseStatusList">
 						<thead>
 							<tr>
 								<th scope="col"></th>
@@ -61,7 +61,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="case,stat : ${assignedCaseStatusList}">
+							<tr th:each="case,stat : ${caseStatusList}">
 								<th scope="row" th:text="${stat.count}"></th>
 								<td th:id="|caseId_${stat.count}|"><span th:text="${case.caseId}"></span></td>
 								<td th:id="|campanyName_${stat.count}|"><span th:text="${case.campanyName}"></span></td>
@@ -78,7 +78,7 @@
 					<input type="button" class="btn btn-danger" id="deleteDummyBtn" data-bs-toggle="modal" data-bs-target="#deleteConfirm" value="削除" disabled>
 					<input type="submit" id="deleteBtn" name="delete" hidden>
 				</th:block>
-				<th:block th:if="${#lists.isEmpty(assignedCaseStatusList)}">
+				<th:block th:if="${#lists.isEmpty(caseStatusList)}">
 					<div class="text-center">
 						<span>※この案件は存在しません。</span>
 					</div>

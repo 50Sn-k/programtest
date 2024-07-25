@@ -13,10 +13,10 @@ import lombok.Getter;
 public enum CaseDeleteResult {
 
 	/*エラーなし*/
-	SUCCEED(MessageConst.ASSIGNED_CASE_STATUSLIST_DELETE_SUCCEED),
+	SUCCEED(MessageConst.CASE_STATUSLIST_DELETE_SUCCEED),
 	
 	/*エラーあり*/
-	ERROR(MessageConst.ASSIGNED_CASE_STATUSLIST_NON_EXISTED_LOGIN_ID);
+	ERROR(MessageConst.CASE_STATUSLIST_NON_EXISTED_LOGIN_ID);
 	
 	/*メッセージID*/
 	private String messageId;

@@ -14,7 +14,7 @@ public class CaseStatusConverter implements AttributeConverter<CaseStatusKind, S
 	 */
 	@Override
 	public String convertToDatabaseColumn(CaseStatusKind caseStatusKind){
-		return caseStatusKind.getCode();//7:31
+		return caseStatusKind.getCode();
 	}
 	
 	/**

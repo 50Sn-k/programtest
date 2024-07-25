@@ -38,7 +38,7 @@ public class UrlConst {
 	public static final String COM_INPUT = "/communicationInput";
 	
 	/*案件一覧*/
-	public static final String ASSIGNED_CASE_STATUS_LIST = "/assignedCaseStatusList";
+	public static final String CASE_STATUS_LIST = "/caseStatusList";
 	
 	/**スキルシート一覧*/
 	public static final String SKILL_SHEET = "/skillSheet";

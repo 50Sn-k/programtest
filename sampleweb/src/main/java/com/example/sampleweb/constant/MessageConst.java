@@ -68,8 +68,8 @@ public class MessageConst {
 	public static final String USEREDIT_UPDATE_SUCCEED = "userEdit.updateSucceed";
 	
 	/*案件一覧画面:存在しない案件ID*/
-	public static final String ASSIGNED_CASE_STATUSLIST_NON_EXISTED_LOGIN_ID = "assignedCaseStatusList.nonExistedLoginId";
+	public static final String CASE_STATUSLIST_NON_EXISTED_LOGIN_ID = "caseStatusList.nonExistedLoginId";
 
 	/*案件一覧画面:案件情報削除完了*/
-	public static final String ASSIGNED_CASE_STATUSLIST_DELETE_SUCCEED = "assignedCaseStatusList.deleteSucceed";
+	public static final String CASE_STATUSLIST_DELETE_SUCCEED = "caseStatusList.deleteSucceed";
 }

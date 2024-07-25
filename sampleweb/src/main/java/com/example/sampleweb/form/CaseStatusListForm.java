@@ -13,7 +13,7 @@ import lombok.Data;
  * 
  */
 @Data
-public class AssignedCaseStatusListForm {
+public class CaseStatusListForm {
 
 	/*ログインID*/
 	@Length(min = 8,max = 20)
@@ -30,7 +30,7 @@ public class AssignedCaseStatusListForm {
 	 * 
 	 * @return 案件一覧情報から選択された案件IDクリア後のインスタンス
 	 */
-	public AssignedCaseStatusListForm clearSelectedCaseId() {
+	public CaseStatusListForm clearSelectedCaseId() {
 		this.selectedcaseId = null;
 		
 		return this;

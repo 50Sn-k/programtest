@@ -11,7 +11,7 @@ import lombok.Data;
  * 
  */
 @Data
-public class AssignedCaseStatusListInfo {
+public class CaseStatusListInfo {
 
 	/*案件ID*/
 	private int caseId;
