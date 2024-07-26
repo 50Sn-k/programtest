@@ -46,5 +46,8 @@ public class ViewNameConst {
 	public static final String SKILL_SHEET_LOOK = "skillSheetLook";
 
 	public static final String SKILL_SHEET = "skillSheet";
+	
+	/** 案件情報入力画面 */
+	public static final String DISPLAY_CASE = "displaycase";
 
 }

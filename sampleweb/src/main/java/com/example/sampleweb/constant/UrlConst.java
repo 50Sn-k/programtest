@@ -43,6 +43,9 @@ public class UrlConst {
 	/*スキルシート一覧*/
 	public static final String SKILL_SHEET_LOOK = "/skillSheetLook";
 	
+	/** 案件情報入力画面 */
+	public static final String DISPLAY_CASE = "/displaycase";
+	
 	/*認証不要画面*/
 	public static final String[] NO_AUTHENTICATION = {LOGIN,SIGNUP,SIGNUP_CONFIRM, SIGNUP_COMPLETION, "/webjars/**","/css/**"};
 
