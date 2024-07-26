@@ -18,7 +18,7 @@ import lombok.Data;
  */
 
 @Entity
-@Table(name = "case")
+@Table(name = "`case`")
 @Data
 @AllArgsConstructor
 public class Case {

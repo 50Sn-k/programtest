@@ -23,7 +23,7 @@ public class CaseStatusListForm {
 	private CaseStatusKind caseStatusKind;
 	
 	/*案件一覧情報から選択された案件ID*/
-	private String selectedcaseId;
+	private String selectedCaseId;
 	
 	/**
 	 * ユーザー情報から指定された案件IDをクリアします。
@@ -31,7 +31,7 @@ public class CaseStatusListForm {
 	 * @return 案件一覧情報から選択された案件IDクリア後のインスタンス
 	 */
 	public CaseStatusListForm clearSelectedCaseId() {
-		this.selectedcaseId = null;
+		this.selectedCaseId = null;
 		
 		return this;
 	}

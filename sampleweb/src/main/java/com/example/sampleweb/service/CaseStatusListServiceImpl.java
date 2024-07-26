@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.sampleweb.constant.UserDeleteResult;
-import com.example.sampleweb.dto.CaseStatusListInfo;
+import com.example.sampleweb.constant.CaseDeleteResult;
 import com.example.sampleweb.dto.CaseSearchInfo;
+import com.example.sampleweb.dto.CaseStatusListInfo;
 import com.example.sampleweb.entity.Case;
 import com.example.sampleweb.repository.CaseRepository;
 import com.example.sampleweb.util.AppUtil;
@@ -44,21 +44,21 @@ public class CaseStatusListServiceImpl implements CaseStatusListService{
 	 */
 	@Override
 	public List<CaseStatusListInfo> editCaseListByParam(CaseSearchInfo dto){
-		return toCaseListInfos(findUserInfoByParam(dto));
+		return toCaseListInfos(findCaseInfoByParam(dto));
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public UserDeleteResult deleteCaseInfoById(String CaseId){
+	public CaseDeleteResult deleteCaseInfoById(String CaseId){
 		var userInfo = repository.findById(CaseId);
 		if(userInfo.isEmpty()) {
-			return UserDeleteResult.ERROR;
+			return CaseDeleteResult.ERROR;
 		}
 		repository.deleteById(CaseId);
 		
-		return UserDeleteResult.SUCCEED;
+		return CaseDeleteResult.SUCCEED;
 	}
 	
 	/**
@@ -69,11 +69,12 @@ public class CaseStatusListServiceImpl implements CaseStatusListService{
 	 * @param form 入力情報
 	 * @return 検索結果
 	 */
-	private List<Case> findUserInfoByParam(CaseSearchInfo dto){
+	private List<Case> findCaseInfoByParam(CaseSearchInfo dto){
 		var caseIdParam = AppUtil.addWildcard(dto.getCaseId());
 
 		if (dto.getCaseStatusKind() != null) {
-			return repository.findByCaseIdLikeAndCaseStatusKind(caseIdParam, dto.getCaseStatusKind());
+			//return repository.findByCaseIdLike(caseIdParam);
+			return repository.findByCaseIdLikeAndCaseStatus(caseIdParam, dto.getCaseStatusKind());
 		} else {
 			return repository.findByCaseIdLike(caseIdParam);
 		}

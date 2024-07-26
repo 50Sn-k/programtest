@@ -16,7 +16,7 @@ public enum CaseDeleteResult {
 	SUCCEED(MessageConst.CASE_STATUSLIST_DELETE_SUCCEED),
 	
 	/*エラーあり*/
-	ERROR(MessageConst.CASE_STATUSLIST_NON_EXISTED_LOGIN_ID);
+	ERROR(MessageConst.CASE_STATUSLIST_NON_EXISTED_CASE_ID);
 	
 	/*メッセージID*/
 	private String messageId;

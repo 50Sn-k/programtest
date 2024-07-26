@@ -2,9 +2,9 @@ package com.example.sampleweb.service;
 
 import java.util.List;
 
-import com.example.sampleweb.constant.UserDeleteResult;
-import com.example.sampleweb.dto.CaseStatusListInfo;
+import com.example.sampleweb.constant.CaseDeleteResult;
 import com.example.sampleweb.dto.CaseSearchInfo;
+import com.example.sampleweb.dto.CaseStatusListInfo;
 
 /**
  * ユーザー一覧画面Serviceインターフェース
@@ -35,5 +35,5 @@ public List<CaseStatusListInfo> editCaseListByParam(CaseSearchInfo dto);
  * @param loginId ログインID
  * @return 実行結果(エラー有無)
  */
-public UserDeleteResult deleteCaseInfoById(String CaseId);
+public CaseDeleteResult deleteCaseInfoById(String CaseId);
 }

@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.sampleweb.constant.CaseDeleteResult;
 import com.example.sampleweb.constant.ModelKey;
 import com.example.sampleweb.constant.SessionKeyConst;
 import com.example.sampleweb.constant.UrlConst;
-import com.example.sampleweb.constant.UserDeleteResult;
 import com.example.sampleweb.constant.ViewNameConst;
 import com.example.sampleweb.constant.db.AuthorityKind;
 import com.example.sampleweb.constant.db.CaseStatusKind;
@@ -112,10 +112,10 @@ public class CaseStatusListController {
 	 * @return リダイレクトURL
 	 */
 	@PostMapping(value = UrlConst.CASE_STATUS_LIST, params = "search")
-	public String searchUser(CaseStatusListForm form, RedirectAttributes redirectAttributes) {
+	public String searchCase(CaseStatusListForm form, RedirectAttributes redirectAttributes) {
 		var searchDto = mapper.map(form, CaseSearchInfo.class);
-		var userInfos = service.editCaseListByParam(searchDto);
-		redirectAttributes.addFlashAttribute(KEY_CASE_STATUS_LIST, userInfos);
+		var caseInfos = service.editCaseListByParam(searchDto);
+		redirectAttributes.addFlashAttribute(KEY_CASE_STATUS_LIST, caseInfos);
 		redirectAttributes.addFlashAttribute(KEY_CASE_STATUS_LIST_FORM, form);
 		redirectAttributes.addFlashAttribute(KEY_OPERATION_KIND, OperationKind.SEARCH);
 
@@ -129,8 +129,8 @@ public class CaseStatusListController {
 	 * @return リダイレクトURL
 	 */
 	@PostMapping(value = UrlConst.CASE_STATUS_LIST, params = "edit")
-	public String updateUser(CaseStatusListForm form) {
-		session.setAttribute(SessionKeyConst.SELECETED_CASE_ID,form.getSelectedcaseId());
+	public String updateCase(CaseStatusListForm form) {
+		session.setAttribute(SessionKeyConst.SELECETED_CASE_ID,form.getSelectedCaseId());
 	return AppUtil.doRedirect(UrlConst.CASE_STATUS_LIST);
 	}
 	/**
@@ -142,9 +142,9 @@ public class CaseStatusListController {
 	 */
 	
 	@PostMapping(value = UrlConst.CASE_STATUS_LIST, params = "delete")
-	public String deleteUser(CaseStatusListForm form, RedirectAttributes redirectAttributes) {
-		var executeResult = service.deleteCaseInfoById(form.getSelectedcaseId());
-		redirectAttributes.addFlashAttribute(ModelKey.IS_ERROR,executeResult == UserDeleteResult.ERROR);
+	public String deleteCase(CaseStatusListForm form, RedirectAttributes redirectAttributes) {
+		var executeResult = service.deleteCaseInfoById(form.getSelectedCaseId());
+		redirectAttributes.addFlashAttribute(ModelKey.IS_ERROR,executeResult == CaseDeleteResult.ERROR);
 		redirectAttributes.addFlashAttribute(ModelKey.MESSAGE,AppUtil.getMessage(messageSource, executeResult.getMessageId()));
 		
 		//削除後、フォーム情報の「選択されたログインID」は不要になるため、クリアします

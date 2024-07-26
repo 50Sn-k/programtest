@@ -14,7 +14,7 @@ import lombok.Data;
 public class CaseStatusListInfo {
 
 	/*案件ID*/
-	private int caseId;
+	private String caseId;
 	
 	/*企業名*/
 	private String campanyName;
