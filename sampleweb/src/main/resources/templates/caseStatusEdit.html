@@ -78,10 +78,12 @@
 					<tr>
 						<td><label for="caseStatus">案件状況：</label></td>
 						<td>
-							<select class="form-select" th:field="*{caseStatus}">
-								<option th:each="caseStatusKindOption : ${caseStatusKindOptions}"
-									th:value="${caseStatusKindOption}" th:text="${caseStatusKindOption.displayValue}"></option>
-							</select>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+
+									<span th:text="${caseStatusEditInfo.caseStatus.displayValue}"></span>
+								</div>
+							</div>
 						</td>
 					</tr>
 				</table>

@@ -1,10 +1,12 @@
 package com.example.sampleweb.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.example.sampleweb.constant.CaseStatusEditMessage;
+import com.example.sampleweb.constant.db.CaseStatusKind;
 import com.example.sampleweb.dto.CaseStatusEditResult;
 import com.example.sampleweb.dto.CaseStatusUpdateInfo;
 import com.example.sampleweb.entity.Case;
@@ -53,11 +55,27 @@ public class CaseStatusEditServiceImpl implements CaseStatusEditService {
 		updateInfo.setCampanyName(caseStatusUpdateInfo.getCampanyName());
 		updateInfo.setCampanyAddress(caseStatusUpdateInfo.getCampanyAddress());
 		updateInfo.setCaseDetail(caseStatusUpdateInfo.getCaseDetail());
+		
+		//案件の日程に変更があれば更新
 		if(caseStatusUpdateInfo.getStartDate().isEmpty()==false) {
-		updateInfo.setCaseStartDate(caseStatusUpdateInfo.getCaseStartDate());
+			updateInfo.setCaseStartDate(caseStatusUpdateInfo.getCaseStartDate());
 		}
 		if(caseStatusUpdateInfo.getFinishDate().isEmpty()==false) {
-		updateInfo.setCaseFinishDate(caseStatusUpdateInfo.getCaseFinishDate());
+			updateInfo.setCaseFinishDate(caseStatusUpdateInfo.getCaseFinishDate());
+		}
+		
+		//案件の日程によって案件状況を設定
+		if(LocalDateTime.now().isBefore(updateInfo.getCaseFinishDate())&&LocalDateTime.now().isAfter(updateInfo.getCaseStartDate())) {
+			updateInfo.setCaseStatus(CaseStatusKind.CASE_DURING);
+		}else if(LocalDateTime.now().isBefore(updateInfo.getCaseStartDate())) {
+			updateInfo.setCaseStatus(CaseStatusKind.CASE_BEFORE);
+		}else if(LocalDateTime.now().isAfter(updateInfo.getCaseFinishDate())) {
+			updateInfo.setCaseStatus(CaseStatusKind.CASE_AFTER);
+		}else {
+			updateInfo.setCaseStatus(CaseStatusKind.UNKNOWN);
+		}
+		if(updateInfo.getCaseStartDate().isAfter(updateInfo.getCaseFinishDate())) {
+			updateInfo.setCaseStatus(CaseStatusKind.UNKNOWN);
 		}
 
 		try {
