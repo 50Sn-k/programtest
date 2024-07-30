@@ -20,7 +20,7 @@ public class CaseStatusListForm {
 	private String caseId;
 	
 	/*案件状況種別*/
-	private CaseStatusKind caseStatusKind;
+	private CaseStatusKind caseStatus;
 	
 	/*案件一覧情報から選択された案件ID*/
 	private String selectedCaseId;

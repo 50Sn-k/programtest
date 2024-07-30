@@ -17,6 +17,6 @@ public class CaseSearchInfo {
 	private String caseId;
 	
 	/*案件状況種別*/
-	private CaseStatusKind caseStatusKind;
+	private CaseStatusKind caseStatus;
 	
 }

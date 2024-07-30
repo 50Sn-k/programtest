@@ -13,8 +13,8 @@ public class CaseStatusConverter implements AttributeConverter<CaseStatusKind, S
 	 * @return 引数で受け取った権限種別Enumに保管されているコード値
 	 */
 	@Override
-	public String convertToDatabaseColumn(CaseStatusKind caseStatusKind){
-		return caseStatusKind.getCode();
+	public String convertToDatabaseColumn(CaseStatusKind caseStatus){
+		return caseStatus.getCode();
 	}
 	
 	/**

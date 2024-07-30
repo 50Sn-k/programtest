@@ -72,9 +72,9 @@ public class CaseStatusListServiceImpl implements CaseStatusListService{
 	private List<Case> findCaseInfoByParam(CaseSearchInfo dto){
 		var caseIdParam = AppUtil.addWildcard(dto.getCaseId());
 
-		if (dto.getCaseStatusKind() != null) {
-			//return repository.findByCaseIdLike(caseIdParam);
-			return repository.findByCaseIdLikeAndCaseStatus(caseIdParam, dto.getCaseStatusKind());
+		if (dto.getCaseStatus() != null) {
+			
+			return repository.findByCaseIdLikeAndCaseStatus(caseIdParam, dto.getCaseStatus());
 		} else {
 			return repository.findByCaseIdLike(caseIdParam);
 		}

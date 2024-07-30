@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー編集</title>
+</head>
+<body>
+<div th:insert="~{common/sourceList :: sourceList}"></div>
+<div th:replace="~{common/header :: header}"></div>
+<script type="text/javascript" th:src="@{/js/userList.js}"></script>
+<div class="container-fluid">
+	<div th:insert="~{common/guideMessage :: guideMessage}"></div>
+	<h2 class="mt-3">案件情報の情報更新ができそうだ</h2>
+	<form th:action="@{/caseStatusEdit}" method="post" th:object="${caseStatusEditForm}">
+		<div class="mt-3">
+				<table>
+					<tr>
+						<td><label for="caseId">案件ID：</label></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+
+									<span th:text="${caseStatusEditInfo.caseId}"></span>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="campanyName">企業名：</label></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<input type="text" class="form-control" th:value="${caseStatusEditInfo.campanyName}" th:field="*{campanyName}"></input>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="campanyAddress">企業住所：</label></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<input type="text" class="form-control" th:value="${caseStatusEditInfo.campanyAddress}" th:field="*{campanyAddress}"></input>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="caseDetail">案件詳細：</label></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<input type="text" class="form-control" th:value="${caseStatusEditInfo.caseDetail}" th:field="*{caseDetail}"></input>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="caseStartDate">案件開始日：</label></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<input type="date" class="form-control" th:text="'現在の日付：'+${#temporals.format(caseStatusEditInfo.caseStartDate,'yyyy/MM/dd')}" th:field="*{startDate}"></input>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="caseStartDate">案件終了日：</label></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<input type="date" class="form-control" th:text="'現在の日付：'+${#temporals.format(caseStatusEditInfo.caseFinishDate,'yyyy/MM/dd')}" th:field="*{finishDate}"></input>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="caseStatus">案件状況：</label></td>
+						<td>
+							<select class="form-select" th:field="*{caseStatus}">
+								<option th:each="caseStatusKindOption : ${caseStatusKindOptions}"
+									th:value="${caseStatusKindOption}" th:text="${caseStatusKindOption.displayValue}"></option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<div class="mt-3">
+					<input type="submit" class="btn btn-primary" name="update" value="更新">
+					<a class="btn btn-secondary" th:href="@{/caseStatusList}">戻る</a>
+				</div>
+		</div>
+	</form>
+</div>
+</html>

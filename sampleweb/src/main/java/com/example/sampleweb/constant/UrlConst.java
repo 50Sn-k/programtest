@@ -37,8 +37,11 @@ public class UrlConst {
 	/** 社内連絡事項入力画面 */
 	public static final String COM_INPUT = "/communicationInput";
 	
-	/*案件一覧*/
+	/*案件情報一覧*/
 	public static final String CASE_STATUS_LIST = "/caseStatusList";
+	
+	/*案件情報編集*/
+	public static final String CASE_STATUS_EDIT = "/caseStatusEdit";
 	
 	/**スキルシート一覧*/
 	public static final String SKILL_SHEET = "/skillSheet";
@@ -48,6 +51,8 @@ public class UrlConst {
 	
 	/*認証不要画面*/
 	public static final String[] NO_AUTHENTICATION = {LOGIN,SIGNUP,SIGNUP_CONFIRM, SIGNUP_COMPLETION, "/webjars/**","/css/**"};
+
+	
 
 
 

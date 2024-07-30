@@ -72,4 +72,13 @@ public class MessageConst {
 
 	/*案件一覧画面:案件情報削除完了*/
 	public static final String CASE_STATUSLIST_DELETE_SUCCEED = "caseStatusList.deleteSucceed";
+	
+	/*ユーザー情報編集画面：存在しないログインID */
+	public static final String CASE_STATUSEDIT_NON_EXISTED_CASE_ID = "caseStatusEdit.nonExistedLoginId";
+	
+	/* ユーザー情報編集画面：ユーザー更新失敗 */
+	public static final String CASE_STATUSEDIT_UPDATE_FAILED = "caseStatusEdit.updateFailed";
+
+	/* ユーザー情報編集画面：ユーザー更新完了 */
+	public static final String CASE_STATUSEDIT_UPDATE_SUCCEED = "caseStatusEdit.updateSucceed";
 }

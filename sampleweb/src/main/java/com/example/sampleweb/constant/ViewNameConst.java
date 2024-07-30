@@ -42,8 +42,11 @@ public class ViewNameConst {
 	/** 社内連絡事項入力画面 */
 	public static final String COM_INPUT = "communicationInput";
 	
-	/*案件一覧*/
+	/*案件情報一覧*/
 	public static final String CASE_STATUS_LIST = "caseStatusList";
+	
+	/* 案件情報編集画面 */
+	public static final String CASE_STATUS_EDIT = "caseStatusEdit";
 	
 	/* スキルシート一覧画面 */
 	public static final String SKILL_SHEET_LOOK = "skillSheetLook";

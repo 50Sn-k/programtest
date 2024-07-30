@@ -131,7 +131,7 @@ public class CaseStatusListController {
 	@PostMapping(value = UrlConst.CASE_STATUS_LIST, params = "edit")
 	public String updateCase(CaseStatusListForm form) {
 		session.setAttribute(SessionKeyConst.SELECETED_CASE_ID,form.getSelectedCaseId());
-	return AppUtil.doRedirect(UrlConst.CASE_STATUS_LIST);
+	return AppUtil.doRedirect(UrlConst.CASE_STATUS_EDIT);
 	}
 	/**
 	 * 選択行のユーザー情報を削除して、最新情報で画面を再表示します

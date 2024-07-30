@@ -35,7 +35,7 @@
 					<tr>
 						<td><span>案件稼働状況:</span></td>
 						<td>
-							<select class="form-select" th:field="*{caseStatusKind}">
+							<select class="form-select" th:field="*{caseStatus}">
 								<option value="">指定なし</option>
 								<option th:each="caseStatusKindOption:${caseStatusKindOptions}"
 								th:value="${caseStatusKindOption}" th:text="${caseStatusKindOption.displayValue}"></option>
@@ -67,8 +67,8 @@
 								<td th:id="|campanyName_${stat.count}|"><span th:text="${case.campanyName}"></span></td>
 								<td th:id="|campanyAddress_${stat.count}|"><span th:text="${case.campanyAddress}"></span></td>
 								<td th:id="|caseDetail_${stat.count}|"><span th:text="${case.caseDetail}"></span></td>
-								<td th:id="|caseStartDate_${stat.count}|"><span th:text="${#temporals.format(case.caseStartDate,'yyyy-MM-dd')}"></span></td>
-								<td th:id="|caseFinishDate_${stat.count}|"><span th:text="${#temporals.format(case.caseFinishDate,'yyyy-MM-dd')}"></span></td>
+								<td th:id="|caseStartDate_${stat.count}|"><span th:text="${#temporals.format(case.caseStartDate,'yyyy/MM/dd')}"></span></td>
+								<td th:id="|caseFinishDate_${stat.count}|"><span th:text="${#temporals.format(case.caseFinishDate,'yyyy/MM/dd')}"></span></td>
 								<td th:id="|caseStatus_${stat.count}|"><span th:text="${case.caseStatus}"></span></td>
 							</tr>
 						</tbody>
