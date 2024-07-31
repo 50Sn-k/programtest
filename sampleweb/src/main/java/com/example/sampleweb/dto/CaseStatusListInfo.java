@@ -25,6 +25,12 @@ public class CaseStatusListInfo {
 	/*案件詳細*/
 	private String caseDetail;
 	
+	/*案件開始日保存*/
+	private String startDate;
+	
+	/*案件終了日保存*/
+	private String finishDate;
+	
 	/*案件開始日*/
 	private LocalDateTime caseStartDate;
 	

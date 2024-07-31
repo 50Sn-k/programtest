@@ -15,9 +15,10 @@
       </h3>
       <div class="label">
         <div class="archive lefts">
-          <h4 class="newmidoku">未読の社内連絡</h4>
-          <br>
+          
           <th:block th:if="${hasUserManageAuth}">
+			 <h4 class="newmidoku">未読の社内連絡</h4>
+          <br> 
             <th:block th:unless="${#lists.isEmpty(comReading)}">
               <table class="table table-striped" id="comReading" align="right">
                 <thead>
@@ -59,7 +60,7 @@
         </div>
         <div class="mt-3">自身の案件情報の確認はこちら
             <br>
-            <a href="" class="btn btn-warning">案件情報確認画面へ</a>
+            <a th:href="@{/caseStatusLook}" class="btn btn-warning">案件情報確認画面へ</a>
           </div>
         <div class="mt-3">スキル・資格情報の入力はこちら
           <br>
@@ -76,6 +77,10 @@
           <div class="mt-3">ユーザー情報の管理はこちら
             <br>
             <a th:href="@{/userList}" class="btn btn-danger">ユーザー管理画面へ</a>
+          </div>
+          <div class="mt-3">新規案件の入力はこちら
+            <br>
+            <a th:href="@{/caseInput}"class="btn btn-danger">	新規案件登録画面へ</a>
           </div>
           <div class="mt-3">案件情報の編集・一覧はこちら
             <br>

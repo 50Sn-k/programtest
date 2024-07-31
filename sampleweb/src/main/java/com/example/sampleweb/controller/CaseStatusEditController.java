@@ -111,7 +111,7 @@ public class CaseStatusEditController {
 			updateDto.setCaseFinishDate(endDate);
 		}
 		var updateResult = service.updateCaseStatusInfo(updateDto);
-		var updateMessage = updateResult.getUpdateMessage();
+		var updateMessage = updateResult.getCaseMessage();
 		if (updateMessage == CaseStatusEditMessage.FAILED) {
 			redirectAttributes.addFlashAttribute(ModelKey.MESSAGE, AppUtil.getMessage(messageSource, updateMessage.getMessageId()));
 			redirectAttributes.addAttribute(REDIRECT_PRAM_ERR,"");

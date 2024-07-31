@@ -67,18 +67,25 @@ public class MessageConst {
 	/* ユーザー情報編集画面：ユーザー更新完了 */
 	public static final String USEREDIT_UPDATE_SUCCEED = "userEdit.updateSucceed";
 	
+	/*新規案件登録画面:案件登録成功*/
+	public static final String CASE_INPUT_SUCCEED = "caseInput.Succeed";
+	
+	/*新規案件登録画面:案件登録失敗*/
+	public static final String CASE_INPUT_FAILED = "caseInput.Failed";
+	
 	/*案件一覧画面:存在しない案件ID*/
 	public static final String CASE_STATUSLIST_NON_EXISTED_CASE_ID = "caseStatusList.nonExistedCaseId";
 
 	/*案件一覧画面:案件情報削除完了*/
 	public static final String CASE_STATUSLIST_DELETE_SUCCEED = "caseStatusList.deleteSucceed";
 	
-	/*ユーザー情報編集画面：存在しないログインID */
+	/*案件編集画面:案件更新成功*/
+	public static final String CASE_STATUSEDIT_UPDATE_FAILED = "caseStatusEdit.updateFailed";
+	
+	/*案件編集画面:案件更新失敗*/
+	public static final String CASE_STATUSEDIT_UPDATE_SUCCEED = "caseStatusEdit.updateSucceed";
+	
+	/*案件編集画面：存在しない案件ID */
 	public static final String CASE_STATUSEDIT_NON_EXISTED_CASE_ID = "caseStatusEdit.nonExistedLoginId";
 	
-	/* ユーザー情報編集画面：ユーザー更新失敗 */
-	public static final String CASE_STATUSEDIT_UPDATE_FAILED = "caseStatusEdit.updateFailed";
-
-	/* ユーザー情報編集画面：ユーザー更新完了 */
-	public static final String CASE_STATUSEDIT_UPDATE_SUCCEED = "caseStatusEdit.updateSucceed";
 }

@@ -37,6 +37,12 @@ public class UrlConst {
 	/** 社内連絡事項入力画面 */
 	public static final String COM_INPUT = "/communicationInput";
 	
+	/** 案件確認画面 */
+	public static final String CASE_LOOK = "/caseStatusLook";
+	
+	/** 新規案件入力画面 */
+	public static final String CASE_INPUT = "/caseInput";
+	
 	/*案件情報一覧*/
 	public static final String CASE_STATUS_LIST = "/caseStatusList";
 	

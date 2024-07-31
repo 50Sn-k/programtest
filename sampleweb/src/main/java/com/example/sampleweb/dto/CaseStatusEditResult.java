@@ -18,5 +18,5 @@ public class CaseStatusEditResult {
 	private Case updateCaseInfo;
 
 	/** ユーザー更新結果メッセージEnum */
-	private CaseStatusEditMessage updateMessage;
+	private CaseStatusEditMessage caseMessage;
 }

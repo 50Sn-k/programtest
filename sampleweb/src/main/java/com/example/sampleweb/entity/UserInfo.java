@@ -95,6 +95,10 @@ public class UserInfo {
 	@Column(name="telephone_number")
 	private String telephoneNumber;
 	
+	/** 案件ID */
+	@Column(name="case_id")
+	private String caseId;
+	
 	public UserInfo(){
 	}
 	
@@ -106,7 +110,7 @@ public class UserInfo {
 	public UserInfo incrementLoginFailureCount() {
 		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
 				contract_time, ++loginFailureCount,accountLockedTime,
-				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress,caseId);
 		
 	}
 	
@@ -119,7 +123,7 @@ public class UserInfo {
 	public UserInfo resetLoginFailureInfo() {
 		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
 				contract_time, 0,null,
-				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress,caseId);
 		
 	}
 	
@@ -131,7 +135,7 @@ public class UserInfo {
 	public UserInfo updateAccountLocked() {
 		return new UserInfo(loginId,password,mailAddress, oneTimeCode, oneTimeCodeSendTime,
 				contract_time, 0,LocalDateTime.now(),
-				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress);
+				userStatusKind,authorityKind,signupCompleted, createTime,updateTime,updateUser, companyAddress, companyAddress, companyAddress,caseId);
 	}
 	
 	/**
@@ -144,6 +148,6 @@ public class UserInfo {
 				LocalDateTime.now(),loginFailureCount,
 				accountLockedTime,userStatusKind,
 				authorityKind,signupCompleted,createTime,updateTime,updateUser
-				,companyName,companyAddress,telephoneNumber);
+				,companyName,companyAddress,telephoneNumber,caseId);
 	}
 }

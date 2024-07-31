@@ -45,7 +45,7 @@ public class CaseStatusEditServiceImpl implements CaseStatusEditService {
 		// 現在の登録情報を取得
 		var updateInfoOpt = repository.findById(caseStatusUpdateInfo.getCaseId());
 		if (updateInfoOpt.isEmpty()) {
-			caseUpdateResult.setUpdateMessage(CaseStatusEditMessage.FAILED);
+			caseUpdateResult.setCaseMessage(CaseStatusEditMessage.FAILED);
 			return caseUpdateResult;
 		}
 
@@ -81,12 +81,12 @@ public class CaseStatusEditServiceImpl implements CaseStatusEditService {
 		try {
 			repository.save(updateInfo);
 		} catch (Exception e) {
-			caseUpdateResult.setUpdateMessage(CaseStatusEditMessage.FAILED);
+			caseUpdateResult.setCaseMessage(CaseStatusEditMessage.FAILED);
 			return caseUpdateResult;
 		}
 
 		caseUpdateResult.setUpdateCaseInfo(updateInfo);
-		caseUpdateResult.setUpdateMessage(CaseStatusEditMessage.SUCCEED);
+		caseUpdateResult.setCaseMessage(CaseStatusEditMessage.SUCCEED);
 		return caseUpdateResult;
 	}
 
