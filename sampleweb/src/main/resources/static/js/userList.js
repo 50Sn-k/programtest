@@ -32,10 +32,6 @@ $(function(){
 	$('#deleteOkBtn').click(function(){
 		$('#deleteBtn').trigger('click');
 	});
-	$('#memberBtn').click(function(){
-		$('#memberSearchBtn').trigger('click');
-	});
-	
  });
  
  /**

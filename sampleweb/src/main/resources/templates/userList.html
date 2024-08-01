@@ -52,19 +52,6 @@
 							</select>
 						</td>
 					</tr>
-					<tr>
-						<td><span>案件ID:</span></td>
-						<td>
-							<div class="row g-3 align-items-center">
-								<div class="col-auto">
-									<input type="text" class="form-control"th:field="*{caseId}">
-								</div>
-								<div class="col-auto">
-									<span class="form-text">※完全一致</span>
-								</div>
-							</div>
-						</td>
-					</tr>
 				</table>
 				<input type="submit" class="btn btn-primary mt-3" name="search" value="検索">
 			</div>
@@ -95,7 +82,6 @@
 								<td th:id="|createTime_${stat.count}|"><span th:text="${#temporals.format(user.createTime,'yyyy-MM-dd HH:mm')}"></span></td>
 								<td th:id="|updateTime_${stat.count}|"><span th:text="${#temporals.format(user.updateTime,'yyyy-MM-dd HH:mm')}"></span></td>
 								<td th:id="|updateUser_${stat.count}|"><span th:text="${user.updateUser}"></span></td>
-								<td th:id="|caseId_${stat.count}|"><span th:text="${user.caseId}"></span></td>
 							</tr>
 						</tbody>
 					</table>

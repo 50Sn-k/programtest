@@ -14,10 +14,9 @@ public interface UserInfoRepository extends JpaRepository<UserInfo,String>{
 	 * ログインIDの部分一致検索を行います。
 	 * 
 	 * @param loginId ログインID
-	 * @param caseId 案件ID
 	 * @return 検索でヒットしたユーザー情報のリスト
 	 */
-	List<UserInfo> findByLoginIdLike(String loginId,String caseId);
+	List<UserInfo> findByLoginIdLike(String loginId);
 
 	/**
 	 * ログインID、アカウント状態の項目を使って検索を行います。
@@ -33,7 +32,7 @@ public interface UserInfoRepository extends JpaRepository<UserInfo,String>{
 	 * @param userStatusKind アカウント状態
 	 * @return 検索でヒットしたユーザー情報のリスト
 	 */
-	List<UserInfo> findByLoginIdLikeAndUserStatusKind(String loginId,String caseId, UserStatusKind userStatusKind);
+	List<UserInfo> findByLoginIdLikeAndUserStatusKind(String loginId, UserStatusKind userStatusKind);
 
 	/**
 	 * ログインID、権限の項目を使って検索を行います。
@@ -49,7 +48,7 @@ public interface UserInfoRepository extends JpaRepository<UserInfo,String>{
 	 * @param authorityKind 権限
 	 * @return 検索でヒットしたユーザー情報のリスト
 	 */
-	List<UserInfo> findByLoginIdLikeAndAuthorityKind(String loginId,String caseId, AuthorityKind authorityKind);
+	List<UserInfo> findByLoginIdLikeAndAuthorityKind(String loginId, AuthorityKind authorityKind);
 
 	/**
 	 * ログインID、アカウント状態、権限の項目を使って検索を行います。
@@ -67,7 +66,7 @@ public interface UserInfoRepository extends JpaRepository<UserInfo,String>{
 	 * @param authorityKind 権限
 	 * @return 検索でヒットしたユーザー情報のリスト
 	 */
-	List<UserInfo> findByLoginIdLikeAndUserStatusKindAndAuthorityKind(String loginId,String caseId, UserStatusKind userStatusKind,
+	List<UserInfo> findByLoginIdLikeAndUserStatusKindAndAuthorityKind(String loginId, UserStatusKind userStatusKind,
 			AuthorityKind authorityKind);
 	
 	/**
