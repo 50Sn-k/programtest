@@ -29,6 +29,9 @@ public class UserListForm {
 	/*ユーザー一覧情報から選択されたログインID*/
 	private String selectedLoginId;
 	
+	/*案件ID*/
+	private String caseId;
+	
 	/**
 	 * ユーザー情報から指定されたログインIDをクリアします。
 	 * 

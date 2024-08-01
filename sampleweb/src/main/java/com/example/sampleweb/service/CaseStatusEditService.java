@@ -30,4 +30,9 @@ public interface CaseStatusEditService {
 	 */
 	public CaseStatusEditResult updateCaseStatusInfo(CaseStatusUpdateInfo updateDto);
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public String searchCaseMember(String caseId);
+
 }

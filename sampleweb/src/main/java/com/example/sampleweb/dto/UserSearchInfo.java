@@ -23,4 +23,7 @@ public class UserSearchInfo {
 	/*ユーザー権限種別*/
 	private AuthorityKind authorityKind;
 	
+	/*案件ID*/
+	private String caseId;
+	
 }

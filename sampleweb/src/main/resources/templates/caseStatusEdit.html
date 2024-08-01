@@ -19,7 +19,6 @@
 						<td>
 							<div class="row g-3 align-items-center">
 								<div class="col-auto">
-
 									<span th:text="${caseStatusEditInfo.caseId}"></span>
 								</div>
 							</div>
@@ -60,7 +59,7 @@
 						<td>
 							<div class="row g-3 align-items-center">
 								<div class="col-auto">
-									<input type="date" class="form-control" th:text="'現在の日付：'+${#temporals.format(caseStatusEditInfo.caseStartDate,'yyyy/MM/dd')}" th:field="*{startDate}"></input>
+									<input type="date" class="form-control" th:text="'現在の開始日：'+${#temporals.format(caseStatusEditInfo.caseStartDate,'yyyy/MM/dd')}" th:field="*{startDate}"></input>
 								</div>
 							</div>
 						</td>
@@ -70,7 +69,7 @@
 						<td>
 							<div class="row g-3 align-items-center">
 								<div class="col-auto">
-									<input type="date" class="form-control" th:text="'現在の日付：'+${#temporals.format(caseStatusEditInfo.caseFinishDate,'yyyy/MM/dd')}" th:field="*{finishDate}"></input>
+									<input type="date" class="form-control" th:text="'現在の終了日：'+${#temporals.format(caseStatusEditInfo.caseFinishDate,'yyyy/MM/dd')}" th:field="*{finishDate}"></input>
 								</div>
 							</div>
 						</td>
@@ -82,6 +81,17 @@
 								<div class="col-auto">
 
 									<span th:text="${caseStatusEditInfo.caseStatus.displayValue}"></span>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="caseStartDate">担当の増員：</label></td>
+						<td>
+							<div class="row g-3 align-items-center">
+								<div class="col-auto">
+									<input type="text" class="form-control" th:field="*{caseMember}"></input>
+									<span th:text="'現在担当の社員：'+${member}"></span>
 								</div>
 							</div>
 						</td>

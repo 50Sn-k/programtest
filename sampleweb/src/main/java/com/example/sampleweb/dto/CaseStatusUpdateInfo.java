@@ -38,4 +38,7 @@ public class CaseStatusUpdateInfo {
 	
 	/*案件状況*/
 	private CaseStatusKind caseStatus;
+	
+	/*案件担当社員*/
+	private String caseMember;
 }

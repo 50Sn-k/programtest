@@ -10,7 +10,9 @@ import com.example.sampleweb.constant.db.CaseStatusKind;
 import com.example.sampleweb.dto.CaseStatusEditResult;
 import com.example.sampleweb.dto.CaseStatusUpdateInfo;
 import com.example.sampleweb.entity.Case;
+import com.example.sampleweb.entity.UserInfo;
 import com.example.sampleweb.repository.CaseRepository;
+import com.example.sampleweb.repository.UserInfoRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,14 +27,17 @@ import lombok.RequiredArgsConstructor;
 public class CaseStatusEditServiceImpl implements CaseStatusEditService {
 
 	/** ユーザー情報テーブルRepository */
-	private final CaseRepository repository;
+	private final CaseRepository repositoryCase;
+	
+	/** ユーザー情報テーブルRepository */
+	private final UserInfoRepository repositoryUser;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Optional<Case> searchCaseStatusInfo(String caseId) {
-		return repository.findById(caseId);
+		return repositoryCase.findById(caseId);
 	}
 
 	/**
@@ -43,7 +48,7 @@ public class CaseStatusEditServiceImpl implements CaseStatusEditService {
 		 var caseUpdateResult = new CaseStatusEditResult();
 
 		// 現在の登録情報を取得
-		var updateInfoOpt = repository.findById(caseStatusUpdateInfo.getCaseId());
+		var updateInfoOpt = repositoryCase.findById(caseStatusUpdateInfo.getCaseId());
 		if (updateInfoOpt.isEmpty()) {
 			caseUpdateResult.setCaseMessage(CaseStatusEditMessage.FAILED);
 			return caseUpdateResult;
@@ -77,9 +82,16 @@ public class CaseStatusEditServiceImpl implements CaseStatusEditService {
 		if(updateInfo.getCaseStartDate().isAfter(updateInfo.getCaseFinishDate())) {
 			updateInfo.setCaseStatus(CaseStatusKind.UNKNOWN);
 		}
+		var inputMember = repositoryUser.findById(caseStatusUpdateInfo.getCaseMember());
+		
 
 		try {
-			repository.save(updateInfo);
+			repositoryCase.save(updateInfo);
+			if(inputMember.isEmpty()==false) {
+				inputMember.get().setCaseId(caseStatusUpdateInfo.getCaseId());
+				repositoryUser.save(inputMember.get());
+			}
+			
 		} catch (Exception e) {
 			caseUpdateResult.setCaseMessage(CaseStatusEditMessage.FAILED);
 			return caseUpdateResult;
@@ -89,5 +101,21 @@ public class CaseStatusEditServiceImpl implements CaseStatusEditService {
 		caseUpdateResult.setCaseMessage(CaseStatusEditMessage.SUCCEED);
 		return caseUpdateResult;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String searchCaseMember(String caseId){
+		try {
+			var caseMemberList = repositoryUser.findByCaseIdLike(caseId);
+			String Members = "";
+			for(UserInfo caseMember : caseMemberList) {
+				Members += (caseMember.getLoginId() + " ");
+			}
+			return Members;
+		}catch(Exception e) {
+			return "担当なし";
+		}
+	}
 }

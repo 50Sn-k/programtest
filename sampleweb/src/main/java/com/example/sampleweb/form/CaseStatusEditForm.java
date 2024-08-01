@@ -42,4 +42,7 @@ public class CaseStatusEditForm {
 	/*案件状況種別*/
 	private CaseStatusKind caseStatus;
 	
+	/*案件担当社員*/
+	private String caseMember;
+	
 }

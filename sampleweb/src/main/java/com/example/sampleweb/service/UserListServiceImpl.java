@@ -71,16 +71,17 @@ public class UserListServiceImpl implements UserListService{
 	 */
 	private List<UserInfo> findUserInfoByParam(UserSearchInfo dto){
 		var loginIdParam = AppUtil.addWildcard(dto.getLoginId());
+		var caseIdParam = AppUtil.addWildcard(dto.getCaseId());
 
 		if (dto.getUserStatusKind() != null && dto.getAuthorityKind() != null) {
-			return repository.findByLoginIdLikeAndUserStatusKindAndAuthorityKind(loginIdParam,
+			return repository.findByLoginIdLikeAndUserStatusKindAndAuthorityKind(loginIdParam,caseIdParam,
 					dto.getUserStatusKind(), dto.getAuthorityKind());
 		} else if (dto.getUserStatusKind() != null) {
-			return repository.findByLoginIdLikeAndUserStatusKind(loginIdParam, dto.getUserStatusKind());
+			return repository.findByLoginIdLikeAndUserStatusKind(loginIdParam,caseIdParam, dto.getUserStatusKind());
 		} else if (dto.getAuthorityKind() != null) {
-			return repository.findByLoginIdLikeAndAuthorityKind(loginIdParam, dto.getAuthorityKind());
+			return repository.findByLoginIdLikeAndAuthorityKind(loginIdParam,caseIdParam, dto.getAuthorityKind());
 		} else {
-			return repository.findByLoginIdLike(loginIdParam);
+			return repository.findByLoginIdLike(loginIdParam,caseIdParam);
 		}
 	}
 	

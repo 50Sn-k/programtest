@@ -24,6 +24,7 @@ $(function(){
 		//更新ボタン、削除ボタンを活性化
 		$('#editBtn').removeAttr('disabled');
 		$('#deleteDummyBtn').removeAttr('disabled');
+		$('#memberBtn').removeAttr('disabled');
 		
 		// ログインID一時保管
 		editSelectedCaseId($(this));
@@ -31,6 +32,10 @@ $(function(){
 	$('#deleteOkBtn').click(function(){
 		$('#deleteBtn').trigger('click');
 	});
+	$('#memberBtn').click(function(){
+		$('#memberSearchBtn').trigger('click');
+	});
+	
  });
  
  /**

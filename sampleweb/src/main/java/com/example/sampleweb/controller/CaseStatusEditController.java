@@ -72,9 +72,12 @@ public class CaseStatusEditController {
 			return ViewNameConst.CASE_STATUS_EDIT;
 		}
 		var caseStatusInfo = userInfoOpt.get();
+		
+		var memberList = service.searchCaseMember(caseId);
 		model.addAttribute("caseStatusEditForm", mapper.map(caseStatusInfo, CaseStatusEditForm.class));
 		model.addAttribute("caseStatusEditInfo", mapper.map(caseStatusInfo, CaseStatusEditInfo.class));
 		model.addAttribute("caseStatusKindOptions", CaseStatusKind.values());
+		model.addAttribute("member",memberList);
 
 		return ViewNameConst.CASE_STATUS_EDIT;
 	}
