@@ -21,13 +21,13 @@ public enum SignupResult {
 	/*仮登録状態*/
 	FAILURE_BY_SIGNUP_PROCEEDING(MessageConst.SIGNUP_SIGNUP_PROCEEDING),
 	
-	/*仮登録状態*/
+	/*DB登録エラー*/
 	FAILURE_BY_DB_ERROR(MessageConst.SIGNUP_DB_ERROR),
 	
-	/*仮登録状態*/
+	/*メール送信エラー*/
 	FAILURE_BY_MAIL_SEND_ERROR(MessageConst.SIGNUP_MAIL_SEND_ERROR);
 	
-	
+	/*メッセージ種別*/
 	String messageId;
 
 }

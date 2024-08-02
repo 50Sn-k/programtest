@@ -57,9 +57,9 @@ public class SkillSheetController {
 	/**
 	 * 画面の入力情報をもとにユーザー情報を更新します。
 	 * 
+	 * @param model モデル
 	 * @param form 入力情報
 	 * @param user 認証済みユーザー情報
-	 * @param redirectAttributes リダイレクト用オブジェクト
 	 * @return リダイレクトURL
 	 */
 	@PostMapping(value = UrlConst.SKILL_SHEET, params = "update")

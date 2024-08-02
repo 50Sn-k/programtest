@@ -27,12 +27,7 @@ public class ContractController {
 	
 	/** 契約画面 contract */
 	private final ContractService service;
-	
-//	/** Dozer Mapper */
-//	private final Mapper mapper;
-//	
-//	/** ユーザ情報テーブルDAO */
-//	private final UserInfoRepository repository;	
+		
 	/**
 	 * 初期表示
 	 * 

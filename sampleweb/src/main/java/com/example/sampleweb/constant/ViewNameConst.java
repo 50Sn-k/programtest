@@ -54,9 +54,10 @@ public class ViewNameConst {
 	/* 案件情報編集画面 */
 	public static final String CASE_STATUS_EDIT = "caseStatusEdit";
 	
+	/* スキルシート入力画面 */
+	public static final String SKILL_SHEET = "skillSheet";
+	
 	/* スキルシート一覧画面 */
 	public static final String SKILL_SHEET_LOOK = "skillSheetLook";
-
-	public static final String SKILL_SHEET = "skillSheet";
 
 }

@@ -11,7 +11,7 @@ import com.example.sampleweb.repository.SkillSheetRepository;
 import lombok.RequiredArgsConstructor;
 
 /**
- * スキルシート情報入力画面サービス
+ * スキル・資格情報入力画面サービス
  * 
  * @author k-murata
  */
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SkillSheetServiceImpl implements SkillSheetService {
 
-	/** ユーザ情報テーブルDAO */
+	/** スキル・資格情報テーブルDAO */
 	private final SkillSheetRepository repository;
 	
 	/**

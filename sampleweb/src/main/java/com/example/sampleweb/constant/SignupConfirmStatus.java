@@ -27,5 +27,6 @@ public enum SignupConfirmStatus {
 	/*DB更新エラー*/
 	FAILURE_BY_DB_ERROR(MessageConst.SIGNUP_DB_ERROR);
 	
+	/*メッセージ種別*/
 	String MessageId;
 }

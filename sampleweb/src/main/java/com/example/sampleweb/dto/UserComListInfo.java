@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 /**
- * 	ユーザー一覧画面DTOクラス
+ * 	社内連絡一覧画面DTOクラス
  * 
  * @author k-suzuki
  * 

@@ -7,7 +7,7 @@ import com.example.sampleweb.constant.db.CaseStatusKind;
 import lombok.Data;
 
 /**
- * ユーザー更新情報DTOクラス
+ * 案件情報一覧更新情報DTOクラス
  * 
  * @author k-suzuki
  * 

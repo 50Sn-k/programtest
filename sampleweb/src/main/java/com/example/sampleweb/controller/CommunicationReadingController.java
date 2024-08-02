@@ -2,7 +2,6 @@ package com.example.sampleweb.controller;
 
 import java.util.List;
 
-import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,6 @@ import com.example.sampleweb.dto.UserComListInfo;
 import com.example.sampleweb.form.ComReadingForm;
 import com.example.sampleweb.service.CommunicationReadingService;
 import com.example.sampleweb.util.AppUtil;
-import com.github.dozermapper.core.Mapper;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -35,19 +33,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CommunicationReadingController {
 	
-	/*ユーザー登録画面Serviceクラス*/
+	/*社内連絡情報一覧画面Serviceクラス*/
 	private final CommunicationReadingService service;
-	
-	/*メッセージソース*/
-	private final MessageSource messageSource;
-	
-	/** オブジェクト間項目輸送クラス */
-	private final Mapper mapper;
 
 	/** セッションオブジェクト */
 	private final HttpSession session;
 	
-	/*モデルキー:ユーザー情報リスト */
+	/*モデルキー:社内連絡情報リスト */
 	private static final String KEY_COM_READING = "comReading";
 
 	/**
@@ -91,7 +83,7 @@ public class CommunicationReadingController {
 	}
 	
 	/**
-	 * a
+	 * 社内連絡情報をテーブルから取得します
 	 * 
 	 * @param model モデル
 	 * @return 社内連絡一覧情報

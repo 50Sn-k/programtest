@@ -6,7 +6,7 @@ import com.example.sampleweb.entity.Case;
 import lombok.Data;
 
 /**
- * ユーザー編集結果DTOクラス
+ * 案件情報登録結果DTOクラス
  * 
  * @author k-suzuki
  *

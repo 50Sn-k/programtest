@@ -1,6 +1,5 @@
 package com.example.sampleweb.controller;
 
-import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -13,55 +12,25 @@ import com.example.sampleweb.entity.Case;
 import com.example.sampleweb.form.CaseStatusListForm;
 import com.example.sampleweb.repository.CaseRepository;
 import com.example.sampleweb.repository.UserInfoRepository;
-import com.example.sampleweb.service.CaseStatusListService;
-import com.github.dozermapper.core.Mapper;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
 public class CaseStatusLookController {
-
-	/*案件一覧画面Serviceクラス*/
-	private final CaseStatusListService service;
 	
-	/*Dozer Mapper*/
-	private final Mapper mapper;
-	
-	/*メッセージソース*/
-	private final MessageSource messageSource;
-	
-	/*セッションオブジェクト*/
-	private final HttpSession session;
-	
-	/*ユーザー情報テーブルDAO*/
+	/*案件情報情報テーブルDTO*/
 	private final CaseRepository repositoryCase;
 	
-	/*ユーザー情報テーブルDAO*/
+	/*ユーザー情報テーブルDTO*/
 	private final UserInfoRepository repositoryUser;
-	
-	
-
-	/*モデルキー：ユーザー情報リストフォーム */
-	private static final String KEY_CASE_STATUS_LIST_FORM = "caseStatusListForm";
-	
-	/*モデルキー:ユーザー情報リスト */
-	private static final String KEY_CASE_STATUS_LIST = "caseStatusList";
-	
-	/*モデルキー:ユーザー情報リスト*/
-	private static final String KEY_CASE_STATUS_KIND_OPTIONS ="caseStatusKindOptions";
-	
-	/*モデルキー:操作種別 */
-	private static final String KEY_OPERATION_KIND = "operationKind";
 	
 	/**
 	 * 画面の初期表示を行います。
 	 * 
-	 * <p>またその際、画面選択項目「アカウント状態」「所有権限」の選択肢を生成して画面に渡します。
-	 * 
 	 * @param model モデル
 	 * @param form 入力情報
+	 * @param user 認証済みユーザー情報
 	 * @return ユーザー一覧画面テンプレート名
 	 */
 	@GetMapping(UrlConst.CASE_LOOK)

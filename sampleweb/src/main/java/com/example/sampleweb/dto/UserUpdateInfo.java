@@ -17,7 +17,7 @@ public class UserUpdateInfo {
 	/*ログインID*/
 	private String loginId;
 	
-	/*ログイン失敗状況をりせっとするか(リセットするならtrue)*/
+	/*ログイン失敗状況をリセットするか(リセットするならtrue)*/
 	private boolean resetsLoginFailure;
 	
 	/*アカウント状態種別*/

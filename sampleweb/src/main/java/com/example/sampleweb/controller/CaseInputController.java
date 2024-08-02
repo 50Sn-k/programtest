@@ -40,11 +40,8 @@ public class CaseInputController {
 	/** 画面で使用するフォームクラス名 */
 	private static final String FORM_CLASS_NAME = "CaseStatusListForm";
 
-	/** ユーザー編集画面Serviceクラス */
+	/** 案件情報登録画面Serviceクラス */
 	private final CaseInputServiceImpl service;
-
-//	/** セッションオブジェクト */
-//	private final HttpSession session;
 
 	/** Dozer Mapper */
 	private final Mapper mapper;
@@ -53,10 +50,11 @@ public class CaseInputController {
 	private final MessageSource messageSource;
 	
 	/**
-	 * ログインIDに紐づくユーザー情報を画面に表示します。
+	 * 案件IDに紐づく案件情報を画面に表示します。
 	 * 
 	 * @param model モデル
 	 * @param form 入力情報
+	 * @param user 認証済みユーザー情報
 	 * @return ユーザー編集画面テンプレート名
 	 * @throws Exception 
 	 */
@@ -76,6 +74,7 @@ public class CaseInputController {
 	/**
 	 * 画面の入力情報をもとにユーザー情報を更新します。
 	 * 
+	 * @param model モデル
 	 * @param form 入力情報
 	 * @param user 認証済みユーザー情報
 	 * @param redirectAttributes リダイレクト用オブジェクト

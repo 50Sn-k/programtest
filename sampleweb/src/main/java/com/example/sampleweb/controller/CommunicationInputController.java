@@ -32,20 +32,14 @@ public class CommunicationInputController {
 	/** 画面で使用するフォームクラス名 */
 	private static final String FORM_CLASS_NAME = "UserComListForm";
 
-	/** ユーザー編集画面Serviceクラス */
+	/** 案件情報登録画面Serviceクラス */
 	private final CommunicationInputServiceImpl service;
-
-//	/** セッションオブジェクト */
-//	private final HttpSession session;
 
 	/** Dozer Mapper */
 	private final Mapper mapper;
 	
-//	/** メッセージソース */
-//	private final MessageSource messageSource;
-	
 	/**
-	 * ログインIDに紐づくユーザー情報を画面に表示します。
+	 * 画面の初期表示を行います
 	 * 
 	 * @param model モデル
 	 * @param form 入力情報
@@ -62,11 +56,11 @@ public class CommunicationInputController {
 	}
 	
 	/**
-	 * 画面の入力情報をもとにユーザー情報を更新します。
+	 * 画面の入力情報をもとに案件情報を登録・更新します。
 	 * 
+	 * @param model モデル
 	 * @param form 入力情報
 	 * @param user 認証済みユーザー情報
-	 * @param redirectAttributes リダイレクト用オブジェクト
 	 * @return リダイレクトURL
 	 */
 	@PostMapping(value = UrlConst.COM_INPUT, params = "update")

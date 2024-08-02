@@ -3,7 +3,7 @@ package com.example.sampleweb.dto;
 import lombok.Data;
 
 /**
- * 	ユーザー一覧画面DTOクラス
+ * 	スキル・資格一覧画面DTOクラス
  * 
  * @author k-suzuki
  * 

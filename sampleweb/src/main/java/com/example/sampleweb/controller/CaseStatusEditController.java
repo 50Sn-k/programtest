@@ -39,7 +39,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CaseStatusEditController {
 
-	/** ユーザー編集画面Serviceクラス */
+	/** 案件情報編集画面Serviceクラス */
 	private final CaseStatusEditService service;
 
 	/** セッションオブジェクト */
@@ -55,11 +55,11 @@ public class CaseStatusEditController {
 	private static final String REDIRECT_PRAM_ERR = "err";
 
 	/**
-	 * 前画面で選択されたログインIDに紐づくユーザー情報を画面に表示します。
+	 * 前画面で選択された案件IDに紐づく案件情報を画面に表示します。
 	 * 
 	 * @param model モデル
 	 * @param form 入力情報
-	 * @return ユーザー編集画面テンプレート名
+	 * @return 案件情報編集画面テンプレート名
 	 * @throws Exception 
 	 */
 	@GetMapping(UrlConst.CASE_STATUS_EDIT)
@@ -94,7 +94,7 @@ public class CaseStatusEditController {
 //	}
 
 	/**
-	 * 画面の入力情報をもとにユーザー情報を更新します。
+	 * 画面の入力情報をもとに案件情報情報を更新します。
 	 * 
 	 * @param form 入力情報
 	 * @param user 認証済みユーザー情報

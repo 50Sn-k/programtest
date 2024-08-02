@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import lombok.Data;
 
 /**
- * ユーザー登録画面Formクラス
+ * スキル・資格登録画面Formクラス
  * 
  * @author k-suzuki
  * 

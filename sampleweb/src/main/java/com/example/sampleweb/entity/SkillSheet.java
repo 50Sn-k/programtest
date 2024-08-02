@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * 社内連絡情報テーブル Entity
+ * スキル・資格情報テーブル Entity
  */
 
 @Entity

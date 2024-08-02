@@ -7,7 +7,7 @@ import com.example.sampleweb.constant.db.CaseStatusKind;
 import lombok.Data;
 
 /**
- * ユーザー登録画面Formクラス
+ * 案件情報編集画面Formクラス
  * 
  * @author k-suzuki
  * 

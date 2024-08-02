@@ -59,11 +59,10 @@ public class CaseStatusListController {
 	/**
 	 * 画面の初期表示を行います。
 	 * 
-	 * <p>またその際、画面選択項目「アカウント状態」「所有権限」の選択肢を生成して画面に渡します。
-	 * 
 	 * @param model モデル
 	 * @param form 入力情報
-	 * @return ユーザー一覧画面テンプレート名
+	 * @param user 認証済みユーザー情報
+	 * @return 案件情報一覧画面テンプレート名
 	 */
 	@GetMapping(UrlConst.CASE_STATUS_LIST)
 	public String view(Model model,CaseStatusListForm form,@AuthenticationPrincipal UserDetails user) {
@@ -84,7 +83,7 @@ public class CaseStatusListController {
 	 * 初期表示、検索後や削除後のリダイレクトによる再表示のいずれかかを判定して画面に表示する一覧情報を作成します。
 	 * 
 	 * @param model モデル
-	 * @return ユーザー一覧情報
+	 * @return 案件情報一覧情報
 	 */
 	@SuppressWarnings("unchecked")
 	private List<CaseStatusListInfo> editCaseListInfo(Model model) {
@@ -105,7 +104,7 @@ public class CaseStatusListController {
 
 	
 	/**
-	 * 検索条件に合致するユーザー情報を画面に表示します。
+	 * 検索条件に合致する案件情報を画面に表示します。
 	 * 
 	 * @param form 入力情報
 	 * @param redirectAttributes リダイレクト用オブジェクト
@@ -123,7 +122,7 @@ public class CaseStatusListController {
 	}
 	
 	/**
-	 * 選択行のユーザー情報を編集する画面に遷移します
+	 * 選択行の案件情報を編集する画面に遷移します
 	 * 
 	 * @param form 入力情報
 	 * @return リダイレクトURL
@@ -134,7 +133,7 @@ public class CaseStatusListController {
 	return AppUtil.doRedirect(UrlConst.CASE_STATUS_EDIT);
 	}
 	/**
-	 * 選択行のユーザー情報を削除して、最新情報で画面を再表示します
+	 * 選択行の案件情報を削除して、最新情報で画面を再表示します
 	 * 
 	 * @param form 入力情報
 	 * @param redirectAttributes リダイレクト用オブジェクト

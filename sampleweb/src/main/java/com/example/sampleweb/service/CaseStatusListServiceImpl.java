@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CaseStatusListServiceImpl implements CaseStatusListService{
 	
-	/*ユーザー情報テーブルDAO*/
+	/*案件情報テーブルDAO*/
 	private final CaseRepository repository;
 	
 	/*Dozer Mapper*/
@@ -62,11 +62,11 @@ public class CaseStatusListServiceImpl implements CaseStatusListService{
 	}
 	
 	/**
-	 * ユーザー情報取得(条件付き)
+	 * 案件情報取得(条件付き)
 	 * 
-	 * ユーザー情報を条件取得する
+	 * 案件情報リストを条件取得する
 	 * 
-	 * @param form 入力情報
+	 * @param dto 検索情報
 	 * @return 検索結果
 	 */
 	private List<Case> findCaseInfoByParam(CaseSearchInfo dto){
@@ -81,10 +81,10 @@ public class CaseStatusListServiceImpl implements CaseStatusListService{
 	}
 	
 	/**
-	 * ユーザー情報EntityのListをユーザー一覧情報DTOのListに変換します
+	 * 案件情報EntityのListをユーザー一覧情報DTOのListに変換します
 	 * 
-	 * @param list ユーザー情報EntityのList
-	 * @return ユーザー一覧情報DTOのList
+	 * @param list 案件情報EntityのList
+	 * @return 案件一覧情報DTOのList
 	 */
 	private List<CaseStatusListInfo> toCaseListInfos(List<Case> list){
 		var caseStatusInfos = new ArrayList<CaseStatusListInfo>();

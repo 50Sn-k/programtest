@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CaseInputServiceImpl implements CaseInputService {
 
-	/** ユーザ情報テーブルDAO */
+	/** 案件情報情報テーブルDAO */
 	private final CaseRepository repository;
 	
 	/**

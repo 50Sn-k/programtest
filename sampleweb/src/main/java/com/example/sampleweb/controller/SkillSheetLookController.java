@@ -2,7 +2,6 @@ package com.example.sampleweb.controller;
 
 import java.util.List;
 
-import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import com.example.sampleweb.constant.db.AuthorityKind;
 import com.example.sampleweb.dto.SkillSheetListInfo;
 import com.example.sampleweb.form.ComReadingForm;
 import com.example.sampleweb.service.SkillSheetLookService;
-import com.github.dozermapper.core.Mapper;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -32,19 +30,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SkillSheetLookController {
 	
-	/*ユーザー登録画面Serviceクラス*/
+	/*スキル・資格登録画面Serviceクラス*/
 	private final SkillSheetLookService service;
-	
-	/*メッセージソース*/
-	private final MessageSource messageSource;
-	
-	/** オブジェクト間項目輸送クラス */
-	private final Mapper mapper;
 
 	/** セッションオブジェクト */
 	private final HttpSession session;
 	
-	/*モデルキー:ユーザー情報リスト */
+	/*モデルキー:スキル・資格情報リスト */
 	private static final String KEY_SKILL_SHEET_LOOK = "skillSheetLook";
 
 	/**
@@ -52,7 +44,8 @@ public class SkillSheetLookController {
 	 * 
 	 * @param model モデル
 	 * @param form 入力情報
-	 * @return 
+	 * @param user 認証済みユーザー情報
+	 * @return 表示画面
 	 */
 	
 	@GetMapping(UrlConst.SKILL_SHEET_LOOK)
@@ -72,10 +65,9 @@ public class SkillSheetLookController {
 	
 	
 	/**
-	 * a
+	 * スキル・資格の一覧情報を取得します。
 	 * 
-	 * @param model モデル
-	 * @return 社内連絡一覧情報
+	 * @return スキル・資格一覧情報
 	 */
 	private List<SkillSheetListInfo> editSkillSheetInfo() {
 
